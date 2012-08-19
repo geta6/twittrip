@@ -94,6 +94,7 @@ $(function () {
         for(i=0;i<floatingLocations.length;i++){
           var location = floatingLocations[i];
           infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
+          alert(infoPos[i]);
           marker[i] = new google.maps.Marker({
             position: infoPos[i],
             title: "twitTrip",
