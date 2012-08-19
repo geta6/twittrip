@@ -94,7 +94,7 @@ $(function () {
 
         for(i=0;i<floatingLocations.length;i++){
           var location = floatingLocations[i];
-          infoPos[i] = new google.maps.LatLng(35,135);
+          infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
           var marker = new google.maps.Marker({
             position: infoPos[i],
             title: "twitTrip",
@@ -103,6 +103,7 @@ $(function () {
           });
           marker.setMap(map);
           //alert(infoPos[i]);
+          alert(tempLon[i]);
           geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[6]) {
