@@ -105,7 +105,7 @@ $(function () {
             if (results[5]) {
               map.setZoom(3);
               infoWindow[i].setContent("hoge");
-              infoWindow[i].open(map, marker[i]);
+              infoWindow[i].open(map, marker[3]);
             }
           } else {
             alert("Geocoder failed due to: " + status);
