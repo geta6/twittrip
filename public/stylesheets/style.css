@@ -21,6 +21,7 @@ body {
   line-height: 50px;
   z-index: 99999;
 }
+
 #location {
   position: fixed;
   left: 50%;
@@ -28,7 +29,7 @@ body {
   z-index: 300;
   width: 16px;
   height: 16px;
-  background: url(/images/location.png)
+  background-image: url(/images/location.png);
   margin-left: -8px;
   margin-top: -8px;
 }
