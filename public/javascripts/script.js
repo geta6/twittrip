@@ -15,7 +15,8 @@ var threw = false;
 $(function () {
 
   var str  = $('#string')
-    , map_canvas  = $('#map_canvas');
+    , map_canvas  = $('#map_canvas')
+    , dom_dir = $('#direction');
   var max = 0;
   var direction;
   var floatDistance;
@@ -29,7 +30,7 @@ $(function () {
       , a = e.webkitCompassAccuracy;
       //console.log(e.webkitCompassHeading);
     if(threw == false){
-      map_canvas.css({'-webkit-transform': 'rotate(' + (-1 * c) + 'deg)'});
+      dom_dir.css({'-webkit-transform': 'rotate(' + (-1 * c) + 'deg)'});
       heading = c;
     }
   }, false);
