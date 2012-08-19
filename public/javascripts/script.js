@@ -103,16 +103,16 @@ $(function () {
             icon: flag
           });
           marker[i].setMap(map);
-          // geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
-          // if (status == google.maps.GeocoderStatus.OK) {
-          //   if (results[3]) {
-          //     map.setZoom(3);
-          //     infoWindow[i].setContent(results[3].formatted_address);
-          //     infoWindow[i].open(map, marker[i]);
-            }
-          } else {
-            alert("Geocoder failed due to: " + status);
-          }
+          // // geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
+          // // if (status == google.maps.GeocoderStatus.OK) {
+          // //   if (results[3]) {
+          // //     map.setZoom(3);
+          // //     infoWindow[i].setContent(results[3].formatted_address);
+          // //     infoWindow[i].open(map, marker[i]);
+          //   }
+          // } else {
+          //   alert("Geocoder failed due to: " + status);
+          // }
         });
         }
         // after throw, stop rotate
