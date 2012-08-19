@@ -91,31 +91,31 @@ $(function () {
           ['landing',landingLat,landingLon,5]
         ];
 
-        for(i=0;i<floatingLocations.length;i++){
-          var location = floatingLocations[i];
-          infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
-          alert(infoPos[i]);
-          marker[i] = new google.maps.Marker({
-            position: infoPos[i],
-            title: "twitTrip",
-            animation: google.maps.Animation.DROP,
-            icon: flag
-          });
-          marker[i].setMap(map);
-          infoWindow[i] = new google.maps.InfoWindow();
-          geocoder[i] = new google.maps.Geocoder();
-          geocoder[i].geocode({'latLng': infoPos[i]}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-              if (results[6]) {
-                map.setZoom(4);
-                alert(results[6].formatted_address);
-                infoWindow[i].setContent(results[6].formatted_address);
-                infoWindow[i].open(map, marker[i]);
-              }
-            } else {
-              alert("Geocoder failed due to: " + status);
-            }
-          });
+        // for(i=0;i<floatingLocations.length;i++){
+        //   var location = floatingLocations[i];
+        //   infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
+        //   alert(infoPos[i]);
+        //   marker[i] = new google.maps.Marker({
+        //     position: infoPos[i],
+        //     title: "twitTrip",
+        //     animation: google.maps.Animation.DROP,
+        //     icon: flag
+        //   });
+        //   marker[i].setMap(map);
+        //   infoWindow[i] = new google.maps.InfoWindow();
+        //   geocoder[i] = new google.maps.Geocoder();
+        //   geocoder[i].geocode({'latLng': infoPos[i]}, function(results, status) {
+        //     if (status == google.maps.GeocoderStatus.OK) {
+        //       if (results[6]) {
+        //         map.setZoom(4);
+        //         alert(results[6].formatted_address);
+        //         infoWindow[i].setContent(results[6].formatted_address);
+        //         infoWindow[i].open(map, marker[i]);
+        //       }
+        //     } else {
+        //       alert("Geocoder failed due to: " + status);
+        //     }
+        //   });
         }
 
 
