@@ -32,7 +32,6 @@ body {
   margin-left: -45px;
   background-image: url(/images/direction.png);
   background-size: 90px 60px;
-  -webkit-transform-origin: center bottom;
 }
 
 #location {
