@@ -1,6 +1,7 @@
 var map;
 var mapOptions;
 var geocoder;
+var geocoder2;
 
 var currentLat;
 var currentLon;
@@ -100,7 +101,8 @@ $(function () {
           marker[i].setMap(map);
         }
         var infoWindow2 = new google.maps.InfoWindow();
-        geocoder.geocode({'latLng': infoPos[1]}, function(results, status) {
+        geocoder2 = new google.maps.Geocoder();
+        geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[6]) {
               map.setZoom(4);
