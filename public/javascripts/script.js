@@ -101,7 +101,7 @@ $(function () {
             icon: flag
           });
           marker.setMap(map);
-          //alert(infoPos[i]);
+          alert(infoPos[i]);
           alert(results[3].formatted_address);
 
           geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
