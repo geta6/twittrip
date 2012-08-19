@@ -109,7 +109,7 @@ $(function () {
           //     map.setZoom(3);
           //     infoWindow[i].setContent(results[3].formatted_address);
           //     infoWindow[i].open(map, marker[i]);
-          //   }
+            }
           } else {
             alert("Geocoder failed due to: " + status);
           }
