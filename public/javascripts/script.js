@@ -117,14 +117,11 @@ $(function () {
             }
           });
         }
-
-
         // after throw, stop rotate
         map_canvas.css({'-webkit-transform': 'rotate(' + (-1 * 0) + 'deg)'});
       }
     }
   }, false);
-}
 
 
 
