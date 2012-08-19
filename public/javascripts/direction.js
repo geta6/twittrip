@@ -3,5 +3,6 @@ $(function () {
   window.addEventListener('deviceorientation', function (e) {
     var compass = e.webkitCompassHeading;
     direction.css({'-webkit-transform': 'rotate(' + (-1 * compass) + 'deg)'});
+    console.log('DIR', compass);
   }, false);
 });
