@@ -40,7 +40,8 @@ $(function () {
       var tempLat = new Array(4);
       var tempLon = new Array(4);
       infoWindow = [new google.maps.InfoWindow({})]
-      var infoPos = new Array(4);
+      infoPos = new Array(4);
+      marker = new Array(4);
       for(var i=0;i<5;i++){
         infoWindow[i]= new google.maps.InfoWindow();
       }
@@ -93,7 +94,7 @@ $(function () {
         for(i=0;i<floatingLocations.length;i++){
           var location = floatingLocations[i];
           infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
-          var marker = new google.maps.Marker({
+          marker[i] = new google.maps.Marker({
             position: infoPos[i],
             title: "twitTrip",
             animation: google.maps.Animation.DROP,
