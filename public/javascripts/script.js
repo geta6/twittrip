@@ -105,8 +105,8 @@ $(function () {
             if (results[5]) {
               map.setZoom(3);
               alert(results[5].formatted_address);
-              infoWindow[i].setContent(results[5].formatted_address);
-              infoWindow[i].open(map, marker[i]);
+              infoWindow[3].setContent(results[5].formatted_address);
+              infoWindow[3].open(map, marker[i]);
             }
           } else {
             alert("Geocoder failed due to: " + status);
