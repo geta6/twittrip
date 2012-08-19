@@ -39,7 +39,7 @@ $(function () {
     if(threw == false){//throw only once
       var tempLat = new Array(4);
       var tempLon = new Array(4);
-      infoWindow = [new google.maps.InfoWindow({})]
+      infoWindow = []
       infoPos = [];
       marker = [];
       for(var i=0;i<5;i++){
@@ -93,6 +93,7 @@ $(function () {
 
         for(i=0;i<floatingLocations.length;i++){
           var location = floatingLocations[i];
+          infoWindow[i] = new google.maps.infoWindow();
           infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
           marker[i] = new google.maps.Marker({
             position: infoPos[i],
@@ -101,9 +102,6 @@ $(function () {
             icon: flag
           });
           marker[i].setMap(map);
-          alert(infoPos[i]);
-          alert(results[3].formatted_address);
-
           geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[3]) {
