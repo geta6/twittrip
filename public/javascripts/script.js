@@ -93,20 +93,18 @@ $(function () {
         for(i=0;i<floatingLocations.length;i++){
           var location = floatingLocations[i];
           infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
-          var marker = new google.maps.Marker({
+          var marker = [new google.maps.Marker({
             position: infoPos[i],
             title: "twitTrip",
             animation: google.maps.Animation.DROP,
             icon: flag
-          });
+          })];
           marker.setMap(map);
           //alert(infoPos[i]);
           geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[3]) {
               map.setZoom(5);
-              alert(results[5].formatted_address);
-alert(infoWindow.length);
               infoWindow[i].setContent(results[5].formatted_address);
               infoWindow[i].open(map, marker);
             }
