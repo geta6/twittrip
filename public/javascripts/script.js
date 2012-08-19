@@ -25,13 +25,12 @@ $(function () {
   var floatingLocations;
 
   window.addEventListener('deviceorientation', function (e) {
-    var c = e.webkitCompassHeading
+    var c = -1 * e.webkitCompassHeading
       , a = e.webkitCompassAccuracy
       , d = $('#direction');
       //console.log(e.webkitCompassHeading);
     if(threw == false){
-      d.css({'-webkit-transform': 'rotate(' + (c) + 'deg)'});
-      console.log('DIR' + c);
+      d.css({'-webkit-transform': 'rotate(' + c + 'deg)'});
       heading = c;
     }
   }, false);
