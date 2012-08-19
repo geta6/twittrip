@@ -40,7 +40,7 @@ $(function () {
     if(threw == false){//throw only once
       var tempLat = new Array(4);
       var tempLon = new Array(4);
-      infoWindow = []
+      infoWindow = [];
       infoPos = [];
       marker = [];
       for(var i=0;i<5;i++){
