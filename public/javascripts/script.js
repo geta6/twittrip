@@ -104,7 +104,6 @@ $(function () {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[5]) {
               map.setZoom(3);
-              alert(results[5].formatted_address);
               infoWindow[i].setContent("hoge");
               infoWindow[i].open(map, marker[i]);
             }
