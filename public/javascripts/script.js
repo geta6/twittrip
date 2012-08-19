@@ -102,11 +102,12 @@ $(function () {
           infoWindow[i] = new google.maps.InfoWindow();
           geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
+                         alert("h");
+
             if (results[6]) {
               map.setZoom(3);
               infoWindow[i].setContent(results[6].formatted_address);
               infoWindow[i].open(map, marker[i]);
-              alert("h");
             }
           } else {
             alert("Geocoder failed due to: " + status);
