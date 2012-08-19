@@ -91,7 +91,6 @@ $(function () {
 
         for(i=0;i<floatingLocations.length;i++){
           var location = floatingLocations[i];
-          infoWindow[i] = new google.maps.InfoWindow();
           infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
           marker[i] = new google.maps.Marker({
             position: infoPos[i],
@@ -100,17 +99,18 @@ $(function () {
             icon: flag
           });
           marker[i].setMap(map);
-        //   geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
-        //   if (status == google.maps.GeocoderStatus.OK) {
-        //     if (results[3]) {
-        //       map.setZoom(3);
-        //       infoWindow[i].setContent(results[3].formatted_address);
-        //       infoWindow[i].open(map, marker[i]);
-        //     }
-        //   } else {
-        //     alert("Geocoder failed due to: " + status);
-        //   }
-        // });
+          infoWindow[i] = new google.maps.InfoWindow();
+          geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            if (results[3]) {
+              map.setZoom(3);
+              infoWindow[i].setContent(results[3].formatted_address);
+              infoWindow[i].open(map, marker[i]);
+            }
+          } else {
+            alert("Geocoder failed due to: " + status);
+          }
+        });
         }
         // after throw, stop rotate
         map_canvas.css({'-webkit-transform': 'rotate(' + (-1 * 0) + 'deg)'});
