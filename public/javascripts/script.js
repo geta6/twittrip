@@ -44,7 +44,7 @@ $(function () {
       infoPos = [];
       marker = [];
       geocoder = [];
-      InfoWindow = [];
+      infoWindow = [];
 
       var g = Math.abs(e.accelerationIncludingGravity.x) + Math.abs(e.accelerationIncludingGravity.y) + Math.abs(e.accelerationIncludingGravity.z);
       if (20 < g) {
