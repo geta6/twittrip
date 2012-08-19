@@ -22,6 +22,18 @@ body {
   z-index: 99999;
 }
 
+#direction {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90px;
+  height: 60px;
+  margin-top: -30px;
+  margin-left: -45px;
+  background-image: url(/images/direction.png);
+  background-size: 90px 60px;
+}
+
 #location {
   position: fixed;
   left: 50%;
