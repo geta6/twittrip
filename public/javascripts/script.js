@@ -99,7 +99,7 @@ $(function () {
             icon: flag
           });
           marker[i].setMap(map);
-          infoWindow[i] = new google.maps.InfoWindow({});
+          infoWindow[i] = new google.maps.InfoWindow();
           geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[5]) {
