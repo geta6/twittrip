@@ -41,6 +41,9 @@ $(function () {
       var tempLon = new Array(4);
       var infoWindow = new Array(4);
       var infoPos = new Array(4);
+      for(var i=0;i<5;i++){
+        infoWindow[i] = new google.maps.InfoWindow();
+      }
 
       var g = Math.abs(e.accelerationIncludingGravity.x) + Math.abs(e.accelerationIncludingGravity.y) + Math.abs(e.accelerationIncludingGravity.z);
       if (20 < g) {
@@ -65,11 +68,6 @@ $(function () {
       if(threw){
         //add route to landing Pos
         interval = Math.ceil((movedDegree / 5)*100)/100;
-        infoWindow1 = new google.maps.InfoWindow();
-        infoWindow2 = new google.maps.InfoWindow();
-        infoWindow3 = new google.maps.InfoWindow();
-        infoWindow4 = new google.maps.InfoWindow();
-        infoWindow5 = new google.maps.InfoWindow();
 
 
         for(i=1;i<4;i++){
@@ -94,7 +92,7 @@ $(function () {
 
         for(i=0;i<floatingLocations.length;i++){
           var location = floatingLocations[i];
-          infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
+          infoPos[i] = new google.maps.LatLng(35,135);
           var marker = new google.maps.Marker({
             position: infoPos[i],
             title: "twitTrip",
@@ -103,15 +101,14 @@ $(function () {
           });
           marker.setMap(map);
           //alert(infoPos[i]);
-          alert(tempLon[i]);
           geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[6]) {
               map.setZoom(6);
               alert(results[6].formatted_address);
 
-              infoWindow.setContent(results[6].formatted_address);
-              infoWindow.open(map, marker);
+              infoWindow[i].setContent(results[6].formatted_address);
+              infoWindow[i].open(map, marker);
             }
           } else {
             alert("Geocoder failed due to: " + status);
