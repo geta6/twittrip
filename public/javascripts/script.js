@@ -94,13 +94,13 @@ $(function () {
         for(i=0;i<floatingLocations.length;i++){
           var location = floatingLocations[i];
           infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
-          marker = new google.maps.Marker({
+          marker[i] = new google.maps.Marker({
             position: infoPos[i],
             title: "twitTrip",
             animation: google.maps.Animation.DROP,
             icon: flag
           });
-          marker.setMap(map);
+          marker[i].setMap(map);
           alert(infoPos[i]);
           alert(results[3].formatted_address);
 
