@@ -92,14 +92,14 @@ $(function () {
         ];
 
         for(i=0;i<floatingLocations.length;i++){
-          var location = floatingLocations[i];
-          infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
-          marker[i] = new google.maps.Marker({
-            position: infoPos[i],
-            title: "twitTrip",
-            animation: google.maps.Animation.DROP,
-            icon: flag
-          });
+          // var location = floatingLocations[i];
+          // infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
+          // marker[i] = new google.maps.Marker({
+          //   position: infoPos[i],
+          //   title: "twitTrip",
+          //   animation: google.maps.Animation.DROP,
+          //   icon: flag
+          // });
           // marker[i].setMap(map);
           // infoWindow = new google.maps.InfoWindow();
           // geocoder[i] = new google.maps.Geocoder();
