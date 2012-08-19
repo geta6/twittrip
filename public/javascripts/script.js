@@ -41,10 +41,10 @@ $(function () {
     if(threw == false){//throw only once
       var tempLat = new Array(4);
       var tempLon = new Array(4);
-      infoPos = [];
-      marker = [];
-      geocoder = [];
-      infoWindow = [];
+      // infoPos = [];
+      // marker = [];
+      // geocoder = [];
+      // infoWindow = [];
 
       var g = Math.abs(e.accelerationIncludingGravity.x) + Math.abs(e.accelerationIncludingGravity.y) + Math.abs(e.accelerationIncludingGravity.z);
       if (20 < g) {
