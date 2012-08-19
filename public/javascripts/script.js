@@ -102,10 +102,10 @@ $(function () {
           infoWindow[i] = new google.maps.InfoWindow();
           geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
-            if (results[3]) {
+            if (results[5]) {
               map.setZoom(3);
-              alert(results[3].formatted_address);
-              infoWindow[i].setContent(results[3].formatted_address);
+              alert(results[5].formatted_address);
+              infoWindow[i].setContent(results[5].formatted_address);
               infoWindow[i].open(map, marker[i]);
             }
           } else {
