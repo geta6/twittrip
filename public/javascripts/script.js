@@ -104,7 +104,8 @@ $(function () {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[6]) {
               map.setZoom(4);
-              alert(results[6].formatted_address);
+              infoWindow2.setContent(results[6].formatted_address);
+              infoWindow2.open(map, marker[1]);
             }
           } else {
             alert("Geocoder failed due to: " + status);
