@@ -185,3 +185,4 @@ $(function(){
     map.setCenter(options.position);
   }
 });
+alert("hoge");
