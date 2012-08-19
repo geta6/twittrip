@@ -100,10 +100,10 @@ $(function () {
           });
           marker[i].setMap(map);
           infoWindow[i] = new google.maps.InfoWindow();
+                                   alert("h");
+
           geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
-                         alert("h");
-
             if (results[6]) {
               map.setZoom(3);
               infoWindow[i].setContent(results[6].formatted_address);
