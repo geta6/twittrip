@@ -15,8 +15,7 @@ var threw = false;
 $(function () {
 
   var str  = $('#string')
-    , map_canvas  = $('#map_canvas')
-    , dom_dir = $('#direction');
+    , map_canvas  = $('#map_canvas');
   var max = 0;
   var direction;
   var floatDistance;
@@ -27,10 +26,12 @@ $(function () {
 
   window.addEventListener('deviceorientation', function (e) {
     var c = e.webkitCompassHeading
-      , a = e.webkitCompassAccuracy;
+      , a = e.webkitCompassAccuracy
+      , d = $('#direction');
       //console.log(e.webkitCompassHeading);
     if(threw == false){
-      dom_dir.css({'-webkit-transform': 'rotate(' + (-1 * c) + 'deg)'});
+      d.css({'-webkit-transform': 'rotate(' + (-1 * c) + 'deg)'});
+      console.log('DIR' + c);
       heading = c;
     }
   }, false);
