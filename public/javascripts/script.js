@@ -100,13 +100,13 @@ $(function () {
             icon: flag
           });
           marker[i].setMap(map);
-          infoWindow[i] = new google.maps.InfoWindow();
           geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[5]) {
               map.setZoom(3);
+              infoWindow[i] = new google.maps.InfoWindow({content: results[5].formatted_address});
               alert(results[5].formatted_address);
-              infoWindow[3].setContent("hoge");
+              //infoWindow[3].setContent("hoge");
               infoWindow[3].open(map, marker[i]);
             }
           } else {
