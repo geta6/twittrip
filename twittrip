@@ -26,6 +26,7 @@ UserSchema = new Schema
 
 FlickrSchema = new Schema()
 
+
 User   = mongo.model 'users',   UserSchema
 Flickr = mongo.model 'flickrs', FlickrSchema
 
