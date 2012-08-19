@@ -30,7 +30,7 @@ $(function () {
       , d = $('#direction');
       //console.log(e.webkitCompassHeading);
     if(threw == false){
-      d.css({'-webkit-transform': 'rotate(' + (-1 * c) + 'deg)'});
+      d.css({'-webkit-transform': 'rotate(' + (c) + 'deg)'});
       console.log('DIR' + c);
       heading = c;
     }
