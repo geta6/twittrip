@@ -43,9 +43,6 @@ $(function () {
       infoWindow = [];
       infoPos = [];
       marker = [];
-      for(var i=0;i<5;i++){
-        infoWindow[i]= new google.maps.InfoWindow();
-      }
 
       var g = Math.abs(e.accelerationIncludingGravity.x) + Math.abs(e.accelerationIncludingGravity.y) + Math.abs(e.accelerationIncludingGravity.z);
       if (20 < g) {
@@ -94,7 +91,7 @@ $(function () {
 
         for(i=0;i<floatingLocations.length;i++){
           var location = floatingLocations[i];
-          infoWindow[i] = new google.maps.infoWindow();
+          infoWindow[i] = new google.maps.InfoWindow();
           infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
           marker[i] = new google.maps.Marker({
             position: infoPos[i],
