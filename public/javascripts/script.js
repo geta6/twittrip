@@ -92,6 +92,7 @@ $(function () {
         for(i=0;i<floatingLocations.length;i++){
           var location = floatingLocations[i];
           infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
+          alert((Math.ceil((((currentLon - landingLon)/(currentLat - landingLat)) * ((currentLat + interval)-currentLat)+currentLon)*100)/100));
           var marker = new google.maps.Marker({
             position: infoPos[i],
             title: "twitTrip",
@@ -104,8 +105,8 @@ $(function () {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[6]) {
               map.setZoom(6);
-              currentInfo.setContent(results[6].formatted_address);
-              currentInfo.open(map, marker);
+              currentInfo[i].setContent(results[6].formatted_address);
+              currentInfo[i].open(map, marker);
             }
           } else {
             alert("Geocoder failed due to: " + status);

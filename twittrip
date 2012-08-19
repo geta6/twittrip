@@ -4,6 +4,7 @@ http   = require 'http'
 async  = require 'async'
 color  = require 'colors'
 qs     = require 'querystring'
+exec   = require('child_process').exec
 
 #FlickrAPI = require('flickr')
 #flickr    = new FlickrAPI('f567abc72e617140f655e9bef2b5b902')
@@ -115,8 +116,13 @@ app.get '/logout', (req, res) ->
 app.get '/', (req, res) ->
   res.render 'index'
 
+app.post '/pull', (req, res) ->
+  exec 'cd /home/perms/twittrip && git pull --rebase'
+
 farmUrl = (data) ->
   "http://farm#{data.farm}.staticflickr.com/#{data.server}/#{data.id}_#{data.secret}.jpg"
+
+
 
 app.get '/tweet', (req, res) ->
   lat = req.query.lat
