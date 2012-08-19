@@ -100,7 +100,7 @@ $(function () {
             icon: flag
           });
           marker.setMap(map);
-          //alert(infoPos[i]);
+          alert(tempLon[i]);
           geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[5]) {
