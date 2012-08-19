@@ -100,13 +100,13 @@ $(function () {
             icon: flag
           });
           marker.setMap(map);
-          alert(infoPos[i]);
+          //alert(infoPos[i]);
           geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[3]) {
               map.setZoom(5);
               alert(results[5].formatted_address);
-
+alert(infoWindow.length);
               infoWindow[i].setContent(results[5].formatted_address);
               infoWindow[i].open(map, marker);
             }
