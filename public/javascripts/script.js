@@ -65,9 +65,12 @@ $(function () {
       if(threw){
         //add route to landing Pos
         interval = Math.ceil((movedDegree / 5)*100)/100;
-        for(var i=0;i<5;i++){
-           infoWindow[i] = new google.maps.InfoWindow();
-        }
+        infoWindow1 = new google.maps.InfoWindow();
+        infoWindow2 = new google.maps.InfoWindow();
+        infoWindow3 = new google.maps.InfoWindow();
+        infoWindow4 = new google.maps.InfoWindow();
+        infoWindow5 = new google.maps.InfoWindow();
+
 
         for(i=1;i<4;i++){
           //liner function for the route
@@ -91,8 +94,7 @@ $(function () {
 
         for(i=0;i<floatingLocations.length;i++){
           var location = floatingLocations[i];
-          infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
-          alert((Math.ceil((((currentLon - landingLon)/(currentLat - landingLat)) * ((currentLat + interval)-currentLat)+currentLon)*100)/100));
+          infoPos[i] = new google.maps.LatLng(35,135);
           var marker = new google.maps.Marker({
             position: infoPos[i],
             title: "twitTrip",
@@ -100,13 +102,15 @@ $(function () {
             icon: flag
           });
           marker.setMap(map);
-
+          //alert(infoPos[i]);
           geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[6]) {
               map.setZoom(6);
-              currentInfo[i].setContent(results[6].formatted_address);
-              currentInfo[i].open(map, marker);
+              alert(results[6].formatted_address);
+
+              infoWindow.setContent(results[6].formatted_address);
+              infoWindow.open(map, marker);
             }
           } else {
             alert("Geocoder failed due to: " + status);

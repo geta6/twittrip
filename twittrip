@@ -117,7 +117,10 @@ app.get '/', (req, res) ->
   res.render 'index'
 
 app.post '/pull', (req, res) ->
-  exec 'cd /home/perms/twittrip && git pull --rebase'
+  exec 'cd /home/perms/twittrip && git pull --rebase', (e, stdout, stdin) ->
+    console.log stdout
+    res.write 200
+    res.end()
 
 farmUrl = (data) ->
   "http://farm#{data.farm}.staticflickr.com/#{data.server}/#{data.id}_#{data.secret}.jpg"
