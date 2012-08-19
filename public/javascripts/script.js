@@ -104,8 +104,9 @@ $(function () {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[5]) {
               map.setZoom(3);
-              infoWindow[i].setContent("hoge");
-              infoWindow[i].open(map, marker[3]);
+              infoWindow[i].setContent(results[5].formatted_address);
+              infoWindow[i].open(map, marker[i]);
+              alert(infoWindow.length);
             }
           } else {
             alert("Geocoder failed due to: " + status);
