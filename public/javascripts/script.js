@@ -41,10 +41,10 @@ $(function () {
     if(threw == false){//throw only once
       var tempLat = new Array(4);
       var tempLon = new Array(4);
-      // infoPos = [];
-      // marker = [];
-      // geocoder = [];
-      // infoWindow = [];
+      infoPos = [];
+      marker = [];
+      geocoder = [];
+      infoWindow = [];
 
       var g = Math.abs(e.accelerationIncludingGravity.x) + Math.abs(e.accelerationIncludingGravity.y) + Math.abs(e.accelerationIncludingGravity.z);
       if (20 < g) {
@@ -92,29 +92,29 @@ $(function () {
         ];
 
         for(i=0;i<floatingLocations.length;i++){
-          // var location = floatingLocations[i];
-          // infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
-          // marker[i] = new google.maps.Marker({
-          //   position: infoPos[i],
-          //   title: "twitTrip",
-          //   animation: google.maps.Animation.DROP,
-          //   icon: flag
-          // });
-          // marker[i].setMap(map);
-          // infoWindow = new google.maps.InfoWindow();
-          // geocoder[i] = new google.maps.Geocoder();
-          // geocoder[i].geocode({'latLng': infoPos[i]}, function(results, status) {
-          //   if (status == google.maps.GeocoderStatus.OK) {
-          //     if (results[6]) {
-          //       map.setZoom(4);
-          //       alert(results[6].formatted_address);
-          //       infoWindow[i].setContent(results[6].formatted_address);
-          //       infoWindow[i].open(map, marker[i]);
-          //     }
-          //   } else {
-          //     alert("Geocoder failed due to: " + status);
-          //   }
-          // });
+          var location = floatingLocations[i];
+          infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
+          marker[i] = new google.maps.Marker({
+            position: infoPos[i],
+            title: "twitTrip",
+            animation: google.maps.Animation.DROP,
+            icon: flag
+          });
+          marker[i].setMap(map);
+          infoWindow = new google.maps.InfoWindow();
+          geocoder[i] = new google.maps.Geocoder();
+          geocoder[i].geocode({'latLng': infoPos[i]}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+              if (results[6]) {
+                map.setZoom(4);
+                alert(results[6].formatted_address);
+                infoWindow[i].setContent(results[6].formatted_address);
+                infoWindow[i].open(map, marker[i]);
+              }
+            } else {
+              alert("Geocoder failed due to: " + status);
+            }
+          });
         }
 
 
