@@ -92,7 +92,7 @@ $(function () {
 
         for(i=0;i<floatingLocations.length;i++){
           var location = floatingLocations[i];
-          infoPos[i] = new google.maps.LatLng(35,135);
+          infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
           var marker = new google.maps.Marker({
             position: infoPos[i],
             title: "twitTrip",
@@ -103,10 +103,11 @@ $(function () {
           //alert(infoPos[i]);
           geocoder.geocode({'latLng': infoPos[i]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
-            if (results[6]) {
-              map.setZoom(6);
+            if (results[5]) {
+              map.setZoom(5);
+              alert(results[5].formatted_address);
 
-              infoWindow[i].setContent(results[6].formatted_address);
+              infoWindow[i].setContent(results[5].formatted_address);
               infoWindow[i].open(map, marker);
             }
           } else {
