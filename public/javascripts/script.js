@@ -101,6 +101,7 @@ $(function () {
             icon: flag
           });
           marker[i].setMap(map);
+          infoWindow = new google.maps.InfoWindow();
           geocoder[i] = new google.maps.Geocoder();
           geocoder[i].geocode({'latLng': infoPos[i]}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
