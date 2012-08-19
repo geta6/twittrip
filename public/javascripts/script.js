@@ -43,6 +43,8 @@ $(function () {
       var tempLon = new Array(4);
       infoPos = [];
       marker = [];
+      geocoder = [];
+      InfoWindow = [];
 
       var g = Math.abs(e.accelerationIncludingGravity.x) + Math.abs(e.accelerationIncludingGravity.y) + Math.abs(e.accelerationIncludingGravity.z);
       if (20 < g) {
@@ -99,26 +101,20 @@ $(function () {
             icon: flag
           });
           marker[i].setMap(map);
-        }
-        var infoWindow2 = new google.maps.InfoWindow();
-        geocoder2 = new google.maps.Geocoder();
-        geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            if (results[6]) {
-              map.setZoom(4);
-              alert(results[6].formatted_address);
-              infoWindow2.setContent(results[6].formatted_address);
-              infoWindow2.open(map, marker[1]);
+          geocoder[i] = new google.maps.Geocoder();
+          geocoder[i].geocode({'latLng': infoPos[i]}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+              if (results[6]) {
+                map.setZoom(4);
+                alert(results[6].formatted_address);
+                infoWindow[i].setContent(results[6].formatted_address);
+                infoWindow[i].open(map, marker[i]);
+              }
+            } else {
+              alert("Geocoder failed due to: " + status);
             }
-          } else {
-            alert("Geocoder failed due to: " + status);
-          }
-        });
-
-        //hoge
-        var infoWindow3 = new google.maps.InfoWindow();
-        var landingInfo = new google.maps.InfoWindow();
-
+          });
+        }
 
 
         // after throw, stop rotate
