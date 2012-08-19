@@ -39,10 +39,10 @@ $(function () {
     if(threw == false){//throw only once
       var tempLat = new Array(4);
       var tempLon = new Array(4);
-      var infoWindow = new Array(4);
+      infoWindow = [new google.maps.InfoWindow({})]
       var infoPos = new Array(4);
       for(var i=0;i<5;i++){
-        infoWindow[i] = new google.maps.InfoWindow();
+        infoWindow[i]= new google.maps.InfoWindow();
       }
 
       var g = Math.abs(e.accelerationIncludingGravity.x) + Math.abs(e.accelerationIncludingGravity.y) + Math.abs(e.accelerationIncludingGravity.z);
@@ -105,7 +105,6 @@ $(function () {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[6]) {
               map.setZoom(6);
-              alert(results[6].formatted_address);
 
               infoWindow[i].setContent(results[6].formatted_address);
               infoWindow[i].open(map, marker);

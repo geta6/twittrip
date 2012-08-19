@@ -117,7 +117,7 @@ app.get '/', (req, res) ->
   res.render 'index'
 
 app.get '/pull', (req, res) ->
-  exec 'cd /home/perms/twittrip && git pull --rebase', (e, stdout, stdin) ->
+  exec 'cd /home/perms/twittrip && git pull --rebase', (e, stdout, stderr) ->
     console.log stdout
     res.writeHead 200, 'Content-Type': 'text/plain'
     res.write "\n\n\nSTDOUT\n\n\n"
@@ -127,7 +127,7 @@ app.get '/pull', (req, res) ->
     res.end()
 
 app.post '/pull', (req, res) ->
-  exec 'cd /home/perms/twittrip && git pull --rebase', (e, stdout, stdin) ->
+  exec 'cd /home/perms/twittrip && git pull --rebase', (e, stdout, stderr) ->
     console.log stdout
     res.writeHead 200, 'Content-Type': 'text/plain'
     res.write "\n\n\nSTDOUT\n\n\n"
