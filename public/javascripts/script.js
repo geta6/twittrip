@@ -16,7 +16,8 @@
   var interval;
   var instanceOfInterval;
   var threw = false;
-  var currentIcon = "../images/transparent.png";
+  var currentIcon = '../images/transparent.png';
+  var infoimage = [];
 
   $(function () {
     var str  = $('#string')
@@ -110,10 +111,11 @@
           geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               if (results[6]) {
+                var contentStr = '<p>' +results[6].formatted_address + '<img src="../images/5.jpg" /></p>';
                 infoWindow2.setContent(results[6].formatted_address);
                 //infoWindow2.open(map, marker[1]);
               }else{
-                infoWindow2.setContent("null");
+                infoWindow2.setContent("On the sea");
                 //infoWindow2.open(map, marker[1]);
               }
             }
@@ -124,7 +126,7 @@
                 infoWindow3.setContent(results[6].formatted_address);
                 //infoWindow3.open(map, marker[2]);
               }else{
-                infoWindow3.setContent("null");
+                infoWindow3.setContent("On the sea");
                 //infoWindow3.open(map, marker[2]);
               }
             }
@@ -135,7 +137,7 @@
                 infoWindow4.setContent(results[6].formatted_address);
                 //infoWindow4.open(map, marker[3]);
               }else{
-                infoWindow4.setContent("null");
+                infoWindow4.setContent("On the sea");
                 //infoWindow4.open(map, marker[3]);
               }
             }
@@ -147,7 +149,7 @@
                 infoWindow5.setContent(results[6].formatted_address);
                 //infoWindow5.open(map, marker[4]);
               }else{
-                infoWindow5.setContent("null");
+                infoWindow5.setContent("On the sea");
                 //infoWindow5.open(map, marker[4]);
               }
             }
