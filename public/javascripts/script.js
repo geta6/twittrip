@@ -52,7 +52,7 @@
         if (20 < g) {
           max = (g > max) ? g : max;//適当に*10して単位はkm
        } else if (max != 0) {
-          floatDistance = Math.ceil(max*100); // tune up the parameter
+          floatDistance = Math.ceil(max*200); // tune up the parameter
           //alert(floatDistance +'kmほど漂いました');
           threw = true;
           max = 0;
@@ -67,7 +67,7 @@
         //add marker
         if(threw){
           //add route to landing Pos
-          interval = Math.ceil((movedDegree / 5)*100)/100;
+          interval = Math.ceil((movedDegree / 5));
           for(i=1;i<4;i++){
             //liner function for the route
             tempLat[0]=currentLat;
@@ -83,14 +83,14 @@
           //need to post
           floatingLocations = [
             ['current',tempLat[0],tempLon[0],1],
-            ['2',tempLat[1],tempLon[1],2],
-            ['3',tempLat[2],tempLon[2],3],
-            ['4',tempLat[3],tempLon[3],4],
+            ['2',Math.ceil(tempLat[1]),Math.ceil(tempLon[1]),2],
+            ['3',Math.ceil(tempLat[2]),Math.ceil(tempLon[2]),3],
+            ['4',Math.ceil(tempLat[3]),Math.ceil(tempLon[3]),4],
             ['landing',landingLat,landingLon,5]
           ];
           for(i=0;i<floatingLocations.length;i++){
             var location = floatingLocations[i];
-            infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
+            infoPos[i] = new google.maps.LatLng(Math.ceil(tempLat[i]),Math.ceil(tempLon[i]);
             marker[i] = new google.maps.Marker({
               position: infoPos[i],
               title: "twitTrip",
