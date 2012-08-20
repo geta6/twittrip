@@ -74,7 +74,7 @@
             tempLon[0]=currentLon;
             tempLat[4]=landingLat;
             tempLon[4]=landingLon;
-            alert(tempLon[i]);
+
             tempLat[i] = Math.ceil((tempLat[i-1]+interval)*100)/100;
             tempLon[i] = (Math.ceil((((currentLon - landingLon)/(currentLat - landingLat)) * ((currentLat + interval)-currentLat)+currentLon)*100)/100)+Math.ceil(Math.random()*100)/100;
           }
@@ -98,6 +98,7 @@
               icon: flag
             });
             marker[i].setMap(map);
+            alert(infoPos[i]);
           }
           var infoWindow2 = new google.maps.InfoWindow();
           var infoWindow3 = new google.maps.InfoWindow();
