@@ -74,6 +74,7 @@
             tempLon[0]=currentLon;
             tempLat[4]=landingLat;
             tempLon[4]=landingLon;
+
             tempLat[i] = Math.ceil((tempLat[i-1]+interval)*100)/100;
             tempLon[i] = (Math.ceil((((currentLon - landingLon)/(currentLat - landingLat)) * ((currentLat + interval)-currentLat)+currentLon)*100)/100)+Math.ceil(Math.random()*100)/100;
           }
@@ -97,6 +98,7 @@
               icon: flag
             });
             marker[i].setMap(map);
+            alert(infoPos[i]);
           }
           var infoWindow2 = new google.maps.InfoWindow();
           var infoWindow3 = new google.maps.InfoWindow();
@@ -110,9 +112,9 @@
 
           geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
-              if (results[6]) {
-                var contentStr = '<p>' +results[6].formatted_address + '<img src="../images/5.jpg" /></p>';
-                infoWindow2.setContent(results[6].formatted_address);
+              if (results[7]) {
+                var contentStr = '<p>' +results[7].formatted_address + '<img src="../images/5.jpg" /></p>';
+                infoWindow2.setContent(results[7].formatted_address);
                 //infoWindow2.open(map, marker[1]);
               }else{
                 infoWindow2.setContent("On the sea");
@@ -122,8 +124,8 @@
           });
           geocoder3.geocode({'latLng': infoPos[2]}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
-              if (results[6]) {
-                infoWindow3.setContent(results[6].formatted_address);
+              if (results[7]) {
+                infoWindow3.setContent(results[7].formatted_address);
                 //infoWindow3.open(map, marker[2]);
               }else{
                 infoWindow3.setContent("On the sea");
@@ -133,8 +135,8 @@
           });
           geocoder4.geocode({'latLng': infoPos[3]}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
-              if (results[6]) {
-                infoWindow4.setContent(results[6].formatted_address);
+              if (results[7]) {
+                infoWindow4.setContent(results[7].formatted_address);
                 //infoWindow4.open(map, marker[3]);
               }else{
                 infoWindow4.setContent("On the sea");
@@ -144,9 +146,9 @@
           });
           geocoder5.geocode({'latLng': infoPos[4]}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
-              if (results[6]) {
+              if (results[7]) {
                 map.setZoom(4);
-                infoWindow5.setContent(results[6].formatted_address);
+                infoWindow5.setContent(results[7].formatted_address);
                 //infoWindow5.open(map, marker[4]);
               }else{
                 infoWindow5.setContent("On the sea");
