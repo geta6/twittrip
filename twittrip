@@ -193,7 +193,7 @@ app.get '/throw', (req, res) ->
   toCorrectLat = (pos) ->
     quot = parseInt pos / 90
     odds = pos % 90
-    return quot % 2 ? odds : -1 * odds
+    return if quot % 2 then odds else -1 * odds
 
   distance = pow * 100 # km
 
