@@ -156,7 +156,7 @@
             infoPos[4]
           ];
           var flightPath = new google.maps.Polyline({
-            path: flightPlanCoordinates,
+            path: flightCoordinates,
             strokeColor: "#6666FF",
             strokeOpacity: 1.0,
             strokeWeight: 2
