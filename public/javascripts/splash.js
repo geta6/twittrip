@@ -5,5 +5,5 @@ $(function () {
     inactive.fadeOut(360, function () {
       splash.fadeOut(240);
     });
-  }, 1200);
+  }, 960);
 });
