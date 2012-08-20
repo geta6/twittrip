@@ -169,53 +169,59 @@
             gotgeo = true;
             // debug.html(debug.html + " : " + geoInfo[i]);
           }
+          if(gotgeo){
+            infoWindow2.setContent(gotInfo[1]);
+            infoWindow3.setContent(gotInfo[2]);
+            infoWindow4.setContent(gotInfo[3]);
+            infoWindow5.setContent(gotInfo[4]);
+          }
 
-          geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-              if (results[6]) {
-                var contentStr = '<p>' +results[6].formatted_address + '<img src="../images/5.jpg" /></p>';
-                infoWindow2.setContent('2' + results[6].formatted_address);
-                //infoWindow2.open(map, marker[1]);
-              }else{
-                infoWindow2.setContent("On the sea");
-                //infoWindow2.open(map, marker[1]);
-              }
-            }
-          });
-          geocoder3.geocode({'latLng': infoPos[2]}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-              if (results[6]) {
-                infoWindow3.setContent('3' + results[6].formatted_address);
-                //infoWindow3.open(map, marker[2]);
-              }else{
-                infoWindow3.setContent("On the sea");
-                //infoWindow3.open(map, marker[2]);
-              }
-            }
-          });
-          geocoder4.geocode({'latLng': infoPos[3]}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-              if (results[6]) {
-                infoWindow4.setContent('4' + results[6].formatted_address);
-                //infoWindow4.open(map, marker[3]);
-              }else{
-                infoWindow4.setContent("On the sea");
-                //infoWindow4.open(map, marker[3]);
-              }
-            }
-          });
-          geocoder5.geocode({'latLng': infoPos[4]}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-              if (results[6]) {
-                map.setZoom(4);
-                infoWindow5.setContent('5' +  results[6].formatted_address);
-                //infoWindow5.open(map, marker[4]);
-              }else{
-                infoWindow5.setContent("On the sea");
-                //infoWindow5.open(map, marker[4]);
-              }
-            }
-          });
+          // geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
+          //   if (status == google.maps.GeocoderStatus.OK) {
+          //     if (results[6]) {
+          //       var contentStr = '<p>' +results[6].formatted_address + '<img src="../images/5.jpg" /></p>';
+          //       infoWindow2.setContent('2' + results[6].formatted_address);
+          //       //infoWindow2.open(map, marker[1]);
+          //     }else{
+          //       infoWindow2.setContent("On the sea");
+          //       //infoWindow2.open(map, marker[1]);
+          //     }
+          //   }
+          // });
+          // geocoder3.geocode({'latLng': infoPos[2]}, function(results, status) {
+          //   if (status == google.maps.GeocoderStatus.OK) {
+          //     if (results[6]) {
+          //       infoWindow3.setContent('3' + results[6].formatted_address);
+          //       //infoWindow3.open(map, marker[2]);
+          //     }else{
+          //       infoWindow3.setContent("On the sea");
+          //       //infoWindow3.open(map, marker[2]);
+          //     }
+          //   }
+          // });
+          // geocoder4.geocode({'latLng': infoPos[3]}, function(results, status) {
+          //   if (status == google.maps.GeocoderStatus.OK) {
+          //     if (results[6]) {
+          //       infoWindow4.setContent('4' + results[6].formatted_address);
+          //       //infoWindow4.open(map, marker[3]);
+          //     }else{
+          //       infoWindow4.setContent("On the sea");
+          //       //infoWindow4.open(map, marker[3]);
+          //     }
+          //   }
+          // });
+          // geocoder5.geocode({'latLng': infoPos[4]}, function(results, status) {
+          //   if (status == google.maps.GeocoderStatus.OK) {
+          //     if (results[6]) {
+          //       map.setZoom(4);
+          //       infoWindow5.setContent('5' +  results[6].formatted_address);
+          //       //infoWindow5.open(map, marker[4]);
+          //     }else{
+          //       infoWindow5.setContent("On the sea");
+          //       //infoWindow5.open(map, marker[4]);
+          //     }
+          //   }
+          // });
 
           //clickable
           google.maps.event.addListener(marker[0], 'click', function() {
