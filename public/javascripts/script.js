@@ -111,7 +111,7 @@
         // landingLon = Math.ceil((currentLon + movedDegree * Math.sin(heading * Math.PI/180))*100)/100;
         // //add marker
         if(threw){
-          var data = GetPoints(currentLat,currentLat,pow,heading);
+          var data = GetPoints(currentLat,currentLon,pow,heading);
           //add route to landing Pos
           // interval = Math.ceil((movedDegree / 5)*100)/100;
           // for(i=1;i<4;i++){
