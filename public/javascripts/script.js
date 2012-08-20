@@ -15,6 +15,7 @@
   var heading;
   var interval;
   var threw = false;
+  var currentIcon = "../images/location.png";
   $(function () {
     var str  = $('#string')
     , map_canvas  = $('#map_canvas');
@@ -89,7 +90,7 @@
             marker[i] = new google.maps.Marker({
               position: infoPos[i],
               title: "twitTrip",
-              animation: google.maps.Animation.BOUNCE,
+              animation: google.maps.Animation.DROP,
               icon: flag
             });
             marker[i].setMap(map);
@@ -184,8 +185,8 @@
           currentMarker = new google.maps.Marker({
             map: map,
             position: pos,
-            icon:flag,
-            animation: google.maps.Animation.BOUNCE
+            icon:currentIcon,
+            animation: google.maps.Animation.DROP
           });
           currentMarker.setMap(map);
           currentInfo = new google.maps.InfoWindow();
