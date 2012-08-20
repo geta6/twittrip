@@ -167,8 +167,17 @@ $(function () {
         });
 
         //clickable
-        google.maps.event.addListener(currentMarker, 'click', function() {
-          currentInfo.open(map, currentMarker);
+        google.maps.event.addListener(marker[1], 'click', function() {
+            marker[1].open(map, marker[1]);
+        });
+        google.maps.event.addListener(marker[2], 'click', function() {
+            marker[2].open(map, marker[2]);
+        });
+        google.maps.event.addListener(marker[3], 'click', function() {
+            marker[3].open(map, marker[3]);
+        });
+        google.maps.event.addListener(marker[4], 'click', function() {
+            marker[4].open(map, marker[4]);
         });
 
 
@@ -203,6 +212,10 @@ $(function () {
               currentInfo.setContent(results[6].formatted_address);
             }
           }
+          // add clickable marker
+          google.maps.event.addListener(currentMarker, 'click', function() {
+            currentInfo.open(map, currentMarker);
+          });
         });
 // todo:reverse geocoding
 
