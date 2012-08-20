@@ -164,7 +164,7 @@
 
           for(i=0;i<5;i++){
             geoInfo[i] = GeoDecoder(data[i].lat, data[i].lon);
-            debug.html(debug.html + " : " + geoInfo[i]);
+            // debug.html(debug.html + " : " + geoInfo[i]);
           }
 
           geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
