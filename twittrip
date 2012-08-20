@@ -217,7 +217,8 @@ app.get '/throw', (req, res) ->
   distance = pow / 50
   halfway  = []
   for p in [0...div]
-    random = Math.random() * 6 - 3
+    #random = Math.random() * 6 - 3
+    random = 0
     if p is 0
       halfway.push toCorrectGeo lat, lon
     else
