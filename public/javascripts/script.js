@@ -119,9 +119,10 @@ $(function () {
         geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[6]) {
-              map.setZoom(4);
-              alert(results[6].formatted_address);
               infoWindow2.setContent(results[6].formatted_address);
+              infoWindow2.open(map, marker[1]);
+            }else{
+              infoWindow2.setContent("null");
               infoWindow2.open(map, marker[1]);
             }
           }
@@ -129,19 +130,22 @@ $(function () {
         geocoder3.geocode({'latLng': infoPos[2]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[6]) {
-              map.setZoom(4);
-              alert(results[6].formatted_address);
               infoWindow3.setContent(results[6].formatted_address);
               infoWindow3.open(map, marker[2]);
+            }else{
+              infoWindow3.setContent("null");
+              infoWindow3.open(map, marker[2]);
             }
+
           }
         });
         geocoder4.geocode({'latLng': infoPos[3]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[6]) {
-              map.setZoom(4);
-              alert(results[6].formatted_address);
               infoWindow4.setContent(results[6].formatted_address);
+              infoWindow4.open(map, marker[3]);
+            }else{
+              infoWindow4.setContent("null");
               infoWindow4.open(map, marker[3]);
             }
           }
@@ -150,8 +154,10 @@ $(function () {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[6]) {
               map.setZoom(4);
-              alert(results[6].formatted_address);
               infoWindow5.setContent(results[6].formatted_address);
+              infoWindow5.open(map, marker[4]);
+            }else{
+              infoWindow5.setContent("null");
               infoWindow5.open(map, marker[4]);
             }
           }
