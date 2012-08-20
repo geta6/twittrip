@@ -181,6 +181,7 @@ app.get '/throw', (req, res) ->
   lon = parseFloat req.query.lon
   pow = parseFloat req.query.pow
   deg = parseFloat req.query.deg
+  div = parseFloat req.query.div || 5
 
   toGeoUnit = (km) ->
     km / 111
@@ -195,13 +196,29 @@ app.get '/throw', (req, res) ->
     odds = pos % 90
     return if quot % 2 then odds else -1 * odds
 
-  distance = pow * 100 # km
-
+  distance = toGeoUnit(pow * 100) # km
   landing =
-    lat: toCorrectLat(lat + (toGeoUnit(distance) * Math.cos(deg * Math.PI / 180)))
-    lon: toCorrectLon(lon + (toGeoUnit(distance) * Math.sin(deg * Math.PI / 180)))
+    lat: toCorrectLat(lat + (distance * Math.cos(deg * Math.PI / 180)))
+    lon: toCorrectLon(lon + (distance * Math.sin(deg * Math.PI / 180)))
 
-  res.end JSON.stringify landing
+  halfway = []
+  splitted = distance / div
+  division = div - 2
+  for p in [1...division]
+    random = Math.random() * 6 - 3
+    if p is 1
+      halfway.push
+        lat: toCorrectLat(lat + (splitted * Math.cos(deg * Math.PI / 180)) + random)
+        lon: toCorrectLon(lon + (splitted * Math.sin(deg * Math.PI / 180)) + random)
+    else
+      halfway.push
+        lat: toCorrectLat(halfway[halfway.length-1].lat + (splitted * Math.cos(deg * Math.PI / 180)) + random)
+        lon: toCorrectLon(halfway[halfway.length-1].lon + (splitted * Math.sin(deg * Math.PI / 180)) + random)
+
+  res.end JSON.stringify
+    current: {lat: lat, lon: lon}
+    halfway: halfway
+    landing: landing
 
 
 app.get '/pos', (req, res) ->
