@@ -109,14 +109,13 @@
           for(i=0;i<floatingLocations.length;i++){
             var location = floatingLocations[i];
             //test
-            infoPos[0] = new google.maps.LatLng(35,135);
-            marker[0] = new google.maps.Marker({
-              position: infoPos[0],
+            infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
+            marker[i] = new google.maps.Marker({
+              position: infoPos[i],
               title: "tweet from twitTrip",
               animation: google.maps.Animation.DROP,
               icon: flag
             });
-            alert(infoPos[i]);
           }
             testPos = new google.maps.LatLng(35,135);
             testMarker = new google.maps.Marker({
