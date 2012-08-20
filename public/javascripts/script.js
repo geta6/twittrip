@@ -2,6 +2,10 @@ var map;
 var mapOptions;
 var geocoder;
 var geocoder2;
+var geocoder3;
+var geocoder4;
+var geocoder5;
+
 
 var currentLat;
 var currentLon;
@@ -43,7 +47,7 @@ $(function () {
       var tempLon = new Array(4);
       infoPos = [];
       marker = [];
-      infoWindow = [];
+      infoWin = [];
       geoInfo = [];
 
       var g = Math.abs(e.accelerationIncludingGravity.x) + Math.abs(e.accelerationIncludingGravity.y) + Math.abs(e.accelerationIncludingGravity.z);
@@ -102,25 +106,56 @@ $(function () {
           });
           marker[i].setMap(map);
         }
-        infoWindow[i] = new google.maps.InfoWindow();
-        geoInfo[i] = new google.maps.Geocoder();
-        geoInfo[i].geocode({'latLng': infoPos[1]}, function(results, status) {
+        var infoWindow2 = new google.maps.InfoWindow();
+        var infoWindow3 = new google.maps.InfoWindow();
+        var infoWindow4 = new google.maps.InfoWindow();
+        var infoWindow5 = new google.maps.InfoWindow();
+
+        geocoder2 = new google.maps.Geocoder();
+        geocoder3 = new google.maps.Geocoder();
+        geocoder4 = new google.maps.Geocoder();
+        geocoder5 = new google.maps.Geocoder();
+
+        geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[6]) {
               map.setZoom(4);
               alert(results[6].formatted_address);
-              infoWindow[i].setContent(results[6].formatted_address);
-              infoWindow[i].open(map, marker[i]);
+              infoWindow2.setContent(results[6].formatted_address);
+              infoWindow2.open(map, marker[1]);
             }
-          } else {
-            alert("Geocoder failed due to: " + status);
           }
         });
-
-        //hoge
-        var infoWindow3 = new google.maps.InfoWindow();
-        var landingInfo = new google.maps.InfoWindow();
-
+        geocoder3.geocode({'latLng': infoPos[2]}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            if (results[6]) {
+              map.setZoom(4);
+              alert(results[6].formatted_address);
+              infoWindow3.setContent(results[6].formatted_address);
+              infoWindow3.open(map, marker[2]);
+            }
+          }
+        });
+        geocoder4.geocode({'latLng': infoPos[3]}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            if (results[6]) {
+              map.setZoom(4);
+              alert(results[6].formatted_address);
+              infoWindow4.setContent(results[6].formatted_address);
+              infoWindow4.open(map, marker[3]);
+            }
+          }
+        });
+        geocoder5.geocode({'latLng': infoPos[4]}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            if (results[6]) {
+              map.setZoom(4);
+              alert(results[6].formatted_address);
+              infoWindow5.setContent(results[6].formatted_address);
+              infoWindow5.open(map, marker[4]);
+            }
+          }
+        });
 
 
         // after throw, stop rotate
