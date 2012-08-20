@@ -168,16 +168,16 @@ $(function () {
 
         //clickable
         google.maps.event.addListener(marker[1], 'click', function() {
-            marker[1].open(map, marker[1]);
+            infoWindow2.open(map, marker[1]);
         });
         google.maps.event.addListener(marker[2], 'click', function() {
-            marker[2].open(map, marker[2]);
+            infoWindow3.open(map, marker[2]);
         });
         google.maps.event.addListener(marker[3], 'click', function() {
-            marker[3].open(map, marker[3]);
+            infoWindow4.open(map, marker[3]);
         });
         google.maps.event.addListener(marker[4], 'click', function() {
-            marker[4].open(map, marker[4]);
+            infoWindow5.open(map, marker[4]);
         });
 
 
