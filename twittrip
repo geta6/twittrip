@@ -188,20 +188,16 @@ app.get '/throw', (req, res) ->
     km / 111
 
   toCorrectLon = (pos) ->
-    if pos > 180 or -180 < pos
-      quot = parseInt pos / 180
-      odds = pos % 180
-      return if quot % 2 then -1 * odds else odds
-    else
-      return pos
+    if pos > 180
+      pos = -1 * pos
+    return pos
 
   toCorrectLat = (pos) ->
-    if pos > 90 or -90 < pos
-      quot = parseInt pos / 90
-      odds = pos % 90
-      return if quot % 2 then -1 * odds else odds
-    else
-      return pos
+    if pos > 90
+      pos = 180 - pos
+    else if -90 > pos
+      pos = -1 * (180 + pos)
+    return pos
 
   toGeoDecode = (lat, lon, callback) ->
     request "http://maps.googleapis.com/maps/api/geocode/json?latlng=#{lat},#{lon}&sensor=false", (err, response, json) ->
