@@ -206,7 +206,7 @@ app.get '/throw', (req, res) ->
   division = div - 2
   for p in [1...division]
     random = Math.random() * 6 - 3
-    if p == 0
+    if p is 1
       halfway.push
         lat: toCorrectLat(lat + (splitted * Math.cos(deg * Math.PI / 180)) + random)
         lon: toCorrectLon(lon + (splitted * Math.sin(deg * Math.PI / 180)) + random)
