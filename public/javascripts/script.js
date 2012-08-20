@@ -98,6 +98,7 @@
         if (20 < g) {
           max = (g > max) ? g : max;//適当に*10して単位はkm
        } else if (max != 0) {
+          alert(max);
           floatDistance = Math.ceil(max*100); // tune up the parameter
           //alert(floatDistance +'kmほど漂いました');
           threw = true;
@@ -111,7 +112,6 @@
         // //add marker
         if(threw){
           var data = GetPoints(currentLat,currentLat,pow,heading);
-          alert(data[0].lat);
           //add route to landing Pos
           // interval = Math.ceil((movedDegree / 5)*100)/100;
           // for(i=1;i<4;i++){
@@ -135,7 +135,7 @@
           ];
           for(i=0;i<5;i++){
             var location = floatingLocations[i];
-            alert(data[i].lat);
+            alert(data[i].lon);
             infoPos[i] = new google.maps.LatLng(data[i].lat,data[i].lon);
             marker[i] = new google.maps.Marker({
               position: infoPos[i],
