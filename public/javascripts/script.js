@@ -39,6 +39,27 @@ $(function () {
 
 
   window.addEventListener('devicemotion', function (e) {
+    if(threw == false){//throw only once
+      var tempLat = new Array(4);
+      var tempLon = new Array(4);
+      infoPos = [];
+      marker = [];
+      geocoder = [];
+      infoWindow = [];
+      var g = Math.abs(e.accelerationIncludingGravity.x) + Math.abs(e.accelerationIncludingGravity.y) + Math.abs(e.accelerationIncludingGravity.z);
+      if (20 < g) {
+        max = (g > max) ? g : max;//適当に*10して単位はkm
+      } else if (max != 0) {
+        floatDistance = Math.ceil(max*10); // tune up the parameter
+        //alert(floatDistance +'kmほど漂いました');
+        threw = true;
+        max = 0;
+      }
+      movedDegree = floatDistance / 111;
+      //set landing pos
+      landingLat = Math.ceil(((currentLat + movedDegree) + movedDegree * Math.cos(heading * Math.PI/180))*100)/100;
+      landingLon = Math.ceil((currentLon + movedDegree * Math.sin(heading * Math.PI/180))*100)/100;
+    }
   }, false);
 
 
