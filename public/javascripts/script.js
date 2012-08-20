@@ -75,8 +75,8 @@
             tempLat[4]=landingLat;
             tempLon[4]=landingLon;
 
-            tempLat[i] = Math.ceil((tempLat[i-1]+interval)*100)/100;
-            tempLon[i] = (Math.ceil((((currentLon - landingLon)/(currentLat - landingLat)) * ((currentLat + interval)-currentLat)+currentLon)*100)/100)+Math.ceil(Math.random()*100)/100;
+            tempLat[i] = Math.ceil((tempLat[i-1]+interval));
+            tempLon[i] = (Math.ceil((((currentLon - landingLon)/(currentLat - landingLat)) * ((currentLat + interval)-currentLat)+currentLon)))+Math.ceil(Math.random()*100)/100;
           }
           //alert(tempLon[3]);
           //post to flickr
