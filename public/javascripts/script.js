@@ -135,7 +135,7 @@
           ];
           for(i=0;i<5;i++){
             var location = floatingLocations[i];
-            alert(data[0].lon);
+            alert(data[i].lon);
             infoPos[i] = new google.maps.LatLng(data[i].lat,data[i].lon);
             marker[i] = new google.maps.Marker({
               position: infoPos[i],
@@ -155,58 +155,58 @@
             //   map: map
             // });
 
-          // var infoWindow2 = new google.maps.InfoWindow();
-          // var infoWindow3 = new google.maps.InfoWindow();
-          // var infoWindow4 = new google.maps.InfoWindow();
-          // var infoWindow5 = new google.maps.InfoWindow();
+          var infoWindow2 = new google.maps.InfoWindow();
+          var infoWindow3 = new google.maps.InfoWindow();
+          var infoWindow4 = new google.maps.InfoWindow();
+          var infoWindow5 = new google.maps.InfoWindow();
 
-          // geocoder2 = new google.maps.Geocoder();
-          // geocoder3 = new google.maps.Geocoder();
-          // geocoder4 = new google.maps.Geocoder();
-          // geocoder5 = new google.maps.Geocoder();
+          geocoder2 = new google.maps.Geocoder();
+          geocoder3 = new google.maps.Geocoder();
+          geocoder4 = new google.maps.Geocoder();
+          geocoder5 = new google.maps.Geocoder();
 
-          geoInfo[1].geocode({'latLng': infoPos[1]}, function(results, status) {
+          geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               if (results[6]) {
                 var contentStr = '<p>' +results[6].formatted_address + '<img src="../images/5.jpg" /></p>';
-                infoWin[1].setContent(results[6].formatted_address);
+                infoWindow2.setContent(results[6].formatted_address);
                 //infoWindow2.open(map, marker[1]);
               }else{
-                infoWin[1].setContent("On the sea");
+                infoWindow2.setContent("On the sea");
                 //infoWindow2.open(map, marker[1]);
               }
             }
           });
-          geoInfo[2].geocode({'latLng': infoPos[2]}, function(results, status) {
+          geocoder3.geocode({'latLng': infoPos[2]}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               if (results[6]) {
-                infoWin[2].setContent(results[6].formatted_address);
+                infoWindow3.setContent(results[6].formatted_address);
                 //infoWindow3.open(map, marker[2]);
               }else{
-                infoWin[2].setContent("On the sea");
+                infoWindow3.setContent("On the sea");
                 //infoWindow3.open(map, marker[2]);
               }
             }
           });
-          geoInfo[3].geocode({'latLng': infoPos[3]}, function(results, status) {
+          geocoder4.geocode({'latLng': infoPos[3]}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               if (results[6]) {
-                infoWin[3].setContent(results[6].formatted_address);
+                infoWindow4.setContent(results[6].formatted_address);
                 //infoWindow4.open(map, marker[3]);
               }else{
-                infoWin[3].setContent("On the sea");
+                infoWindow4.setContent("On the sea");
                 //infoWindow4.open(map, marker[3]);
               }
             }
           });
-          geoInfo[4].geocode({'latLng': infoPos[4]}, function(results, status) {
+          geocoder5.geocode({'latLng': infoPos[4]}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               if (results[6]) {
                 map.setZoom(4);
-                infoWin[4].setContent(results[6].formatted_address);
+                infoWindow5.setContent(results[6].formatted_address);
                 //infoWindow5.open(map, marker[4]);
               }else{
-                infoWin[4].setContent("On the sea");
+                infoWindow5.setContent("On the sea");
                 //infoWindow5.open(map, marker[4]);
               }
             }
