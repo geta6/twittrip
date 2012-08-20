@@ -43,6 +43,8 @@ $(function () {
       var tempLon = new Array(4);
       infoPos = [];
       marker = [];
+      infoWindow = [];
+      geoInfo = [];
 
       var g = Math.abs(e.accelerationIncludingGravity.x) + Math.abs(e.accelerationIncludingGravity.y) + Math.abs(e.accelerationIncludingGravity.z);
       if (20 < g) {
@@ -100,15 +102,15 @@ $(function () {
           });
           marker[i].setMap(map);
         }
-        var infoWindow2 = new google.maps.InfoWindow();
-        geocoder2 = new google.maps.Geocoder();
-        geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
+        infoWindow[i] = new google.maps.InfoWindow();
+        geoInfo[i] = new google.maps.Geocoder();
+        geoInfo[i].geocode({'latLng': infoPos[1]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[6]) {
               map.setZoom(4);
               alert(results[6].formatted_address);
-              infoWindow2.setContent(results[6].formatted_address);
-              infoWindow2.open(map, marker[1]);
+              infoWindow[i].setContent(results[6].formatted_address);
+              infoWindow[i].open(map, marker[i]);
             }
           } else {
             alert("Geocoder failed due to: " + status);
