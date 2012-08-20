@@ -149,6 +149,7 @@ app.get '/geo', (req, res) ->
       for photo, i in json.photos.photo
         json.photos.photo[i].uri = farmUrl(photo)
       random = ~~(Math.random * json.photos.photo.length)
+      console.log json.photos.photo
       response = "<p>#{address}</p><p><img class='flickr_image' src='#{json.photos.photo[random].url}'></p>"
       console.log response
       res.writeHead 200, 'Content-Type': 'text/plain;charset=UTF-8'
