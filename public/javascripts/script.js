@@ -54,7 +54,7 @@ $(function () {
       if (20 < g) {
         max = (g > max) ? g : max;//適当に*10して単位はkm
       } else if (max != 0) {
-        floatDistance = Math.ceil(max*10); // tune up the parameter
+        floatDistance = Math.ceil(max*1); // tune up the parameter
         //alert(floatDistance +'kmほど漂いました');
         threw = true;
         max = 0;
