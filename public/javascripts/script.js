@@ -1,6 +1,7 @@
 var map;
 var mapOptions;
 var geocoder;
+var geocoder2;
 
 var currentLat;
 var currentLon;
@@ -15,8 +16,7 @@ var threw = false;
 $(function () {
 
   var str  = $('#string')
-    , map_canvas  = $('#map_canvas')
-    , dom_dir = $('#direction');
+    , map_canvas  = $('#map_canvas');
   var max = 0;
   var direction;
   var floatDistance;
@@ -26,11 +26,12 @@ $(function () {
   var floatingLocations;
 
   window.addEventListener('deviceorientation', function (e) {
-    var c = e.webkitCompassHeading
-      , a = e.webkitCompassAccuracy;
+    var c = -1 * e.webkitCompassHeading
+      , a = e.webkitCompassAccuracy
+      , d = $('#direction');
       //console.log(e.webkitCompassHeading);
     if(threw == false){
-      dom_dir.css({'-webkit-transform': 'rotate(' + (-1 * c) + 'deg)'});
+      d.css({'-webkit-transform': 'rotate(' + c + 'deg)'});
       heading = c;
     }
   }, false);
@@ -40,10 +41,8 @@ $(function () {
     if(threw == false){//throw only once
       var tempLat = new Array(4);
       var tempLon = new Array(4);
-      infoWindow = [];
       infoPos = [];
       marker = [];
-      geoInfo = [];
 
       var g = Math.abs(e.accelerationIncludingGravity.x) + Math.abs(e.accelerationIncludingGravity.y) + Math.abs(e.accelerationIncludingGravity.z);
       if (20 < g) {
@@ -100,20 +99,28 @@ $(function () {
             icon: flag
           });
           marker[i].setMap(map);
-          geoInfo[i].geocode({'latLng': infoPos[i]}, function(results, status) {
+        }
+        var infoWindow2 = new google.maps.InfoWindow();
+        geocoder2 = new google.maps.Geocoder();
+        geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
-            if (results[5]) {
-              map.setZoom(3);
-              infoWindow[i] = new google.maps.InfoWindow();
-              //alert(results[5].formatted_address);
-              infoWindow[i].setContent(results[5].formatted_address);
-              infoWindow[i].open(map, marker[i]);
+            if (results[6]) {
+              map.setZoom(4);
+              alert(results[6].formatted_address);
+              infoWindow2.setContent(results[6].formatted_address);
+              infoWindow2.open(map, marker[1]);
             }
           } else {
             alert("Geocoder failed due to: " + status);
           }
         });
-        }
+
+        //hoge
+        var infoWindow3 = new google.maps.InfoWindow();
+        var landingInfo = new google.maps.InfoWindow();
+
+
+
         // after throw, stop rotate
         map_canvas.css({'-webkit-transform': 'rotate(' + (-1 * 0) + 'deg)'});
       }
