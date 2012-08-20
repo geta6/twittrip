@@ -170,6 +170,10 @@ $(function () {
     }
   }, false);
 
+google.maps.event.addEventListener(marker[1],'click',function(){
+  alert("clicked");
+});
+
 
 
   //set map
