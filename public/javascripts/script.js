@@ -90,10 +90,10 @@
       if(threw == false){//throw only once
         // var tempLat = new Array(4);
         // var tempLon = new Array(4);
-        // infoPos = [];
-        // marker = [];
-        // infoWin = [];
-        // geoInfo = [];
+        infoPos = [];
+        marker = [];
+        infoWin = [];
+        geoInfo = [];
         var g = Math.abs(e.accelerationIncludingGravity.x) + Math.abs(e.accelerationIncludingGravity.y) + Math.abs(e.accelerationIncludingGravity.z);
         if (20 < g) {
           max = (g > max) ? g : max;//適当に*10して単位はkm
