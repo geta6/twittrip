@@ -178,7 +178,13 @@
 
     //set map
     function initialize() {
-      mapOptions = { zoom: 6, mapTypeId: google.maps.MapTypeId.ROADMAP };
+      mapOptions = {
+        zoom: 6,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        navigationControl: false,
+        mapTypeControl: false,
+        scaleControl: false
+      };
       map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
       if(navigator.geolocation) {
