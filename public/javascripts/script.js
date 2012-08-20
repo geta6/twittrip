@@ -22,7 +22,7 @@
   var testPos;
   var testMarker;
   var pow;
-
+  var debug = $('#debug');
 
   var GetPoints = function (lat, lon, pow, deg, div) {
     div = div || 5;
@@ -163,8 +163,8 @@
           geocoder5 = new google.maps.Geocoder();
 
           for(i=0;i<5;i++){
-            geoInfo[i] = GeoDecoder(data[i].lat,data[i].lot);
-            alert(geoInfo[i]);
+            geoInfo[i] = GeoDecoder(data[i].lat, data[i].lot);
+            debug.html(debug.html + " : " + geoInfo[i]);
           }
 
           geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
