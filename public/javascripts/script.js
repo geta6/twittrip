@@ -15,7 +15,8 @@
   var heading;
   var interval;
   var threw = false;
-  var currentIcon = "";
+  var currentIcon = "../images/transparent.png";
+
   $(function () {
     var str  = $('#string')
     , map_canvas  = $('#map_canvas');
