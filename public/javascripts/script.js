@@ -198,7 +198,7 @@
             var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             map.setCenter(pos);
           });
-        }, 1000);
+        }, 500);
 
         geocoder = new google.maps.Geocoder();
         navigator.geolocation.getCurrentPosition(function(position) {
