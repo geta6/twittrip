@@ -168,15 +168,15 @@
 
           for(i=0;i<5;i++){
             geoInfo[i] = (GeoDecoder(data[i].lat, data[i].lon)).address;
-            //alert(geoInfo[i]);
+            // alert(geoInfo[i]);
             gotGeo = true;
             // debug.html(debug.html + " : " + geoInfo[i]);
           }
           if(gotGeo){
-            infoWindow2.setContent(geoInfo[1]);
-            infoWindow3.setContent(geoInfo[2]);
-            infoWindow4.setContent(geoInfo[3]);
-            infoWindow5.setContent(geoInfo[4]);
+            infoWindow2.setContent(String(geoInfo[1]));
+            infoWindow3.setContent(String(geoInfo[2]));
+            infoWindow4.setContent(String(geoInfo[3]));
+            infoWindow5.setContent(String(geoInfo[4]));
           }
 
           // geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
