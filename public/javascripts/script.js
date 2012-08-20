@@ -224,6 +224,13 @@
             google.maps.event.addListener(currentMarker, 'click', function() {
               currentInfo.open(map, currentMarker);
             });
+
+            //simulate click
+            var locIcon = document.getElementById("location");
+            google.maps.event.addDomListener(locIcon, "click", function(){
+              google.maps.event.trigger(currentMarker, "click");
+            });
+
           });
           // todo:reverse geocoding
 
