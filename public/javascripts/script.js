@@ -43,7 +43,7 @@
   }
 
   var data = GetPoints(35,135,20,10,5);
-  alert(data[1].lat + data[1].lon);
+  alert(data[0].lat);
 
   var GeoDecoder = function (lat, lon, lev) {
     lev = lev || 5;
@@ -63,6 +63,8 @@
     });
     return address;
   }
+
+
 
 
   $(function () {
