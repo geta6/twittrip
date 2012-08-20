@@ -189,12 +189,12 @@ app.get '/throw', (req, res) ->
   toCorrectLon = (pos) ->
     quot = parseInt pos / 180
     odds = pos % 180
-    return if quot % 2 then odds else -1 * odds
+    return if quot % 2 then -1 * odds else odds
 
   toCorrectLat = (pos) ->
     quot = parseInt pos / 90
     odds = pos % 90
-    return if quot % 2 then odds else -1 * odds
+    return if quot % 2 then -1 * odds else odds
 
   distance = toGeoUnit(pow * 100) # km
   random = Math.random() * 1.5 - 0.5
