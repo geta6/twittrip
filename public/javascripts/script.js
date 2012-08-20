@@ -62,11 +62,7 @@
     return address;
   }
 
-
-
-
   $(function () {
-
     var str  = $('#string')
     , map_canvas  = $('#map_canvas');
     var max = 0;
@@ -135,7 +131,7 @@
           ];
           for(i=0;i<5;i++){
             var location = floatingLocations[i];
-            alert(data[i].lon);
+            // alert(data[i].lon);
             infoPos[i] = new google.maps.LatLng(data[i].lat,data[i].lon);
             marker[i] = new google.maps.Marker({
               position: infoPos[i],
@@ -144,8 +140,8 @@
               icon: flag,
               map: map
             });
-            infoWin[i] = new google.maps.InfoWindow();
-            geoInfo[i] = new google.maps.Geocoder();
+            // infoWin[i] = new google.maps.InfoWindow();
+            // geoInfo[i] = new google.maps.Geocoder();
           }
             // testPos = new google.maps.LatLng(35,135);
             // testMarker = new google.maps.Marker({
