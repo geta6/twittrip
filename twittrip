@@ -6,45 +6,6 @@ color  = require 'colors'
 qs     = require 'querystring'
 exec   = require('child_process').exec
 
-#FlickrAPI = require('flickr')
-#flickr    = new FlickrAPI('f567abc72e617140f655e9bef2b5b902')
-
-##==-- MongoDB --==##
-
-mongo   = require 'mongoose'
-mongo.connect 'mongodb://localhost/perms_twittrip'
-
-Schema   = mongo.Schema
-ObjectId = Schema.ObjectId
-
-UserSchema = new Schema
-  uid    : String
-  name   : String
-  icon   : String
-  token  : String
-  secret : String
-
-FlickrSchema = new Schema()
-
-
-User   = mongo.model 'users',   UserSchema
-Flickr = mongo.model 'flickrs', FlickrSchema
-
-ErrorFilter = (err, label, next) ->
-  if err
-    console.log (String label).red, (String err).magenta
-    next = () -> false
-  next()
-
-GetUser = (id, uid, callback) ->
-  callback = callback || (err, data) -> false
-  if id
-    User.findById id, (err, user) ->
-      callback (if err then ErrorHandler err else null), user
-  else
-    User.findOne uid:uid, (err, user) ->
-      callback (if err then ErrorHandler err else null), user
-
 
 ##==-- Passport
 
@@ -57,21 +18,13 @@ pass.serializeUser (user, done) -> done null, user
 pass.deserializeUser (object, done) -> done null, object
 
 pass.use new auth opts, (token, secret, profile, done) ->
-  GetUser null, profile.uid, (err, user) ->
-    if user
-      user.name   = profile.username
-      user.icon   = profile._json.profile_image_url
-      user.save (e, user) ->
-        done null, user
-    else
-      user = new User
-        uid    : profile._json.id_str
-        name   : profile.username
-        icon   : profile._json.profile_image_url
-        token  : token
-        secret : secret
-      user.save (e, user) ->
-        done null, user
+  user =
+    uid    : profile._json.id_str
+    name   : profile.username
+    icon   : profile._json.profile_image_url
+    token  : token
+    secret : secret
+  done null, user
 
 
 ##==-- Express --==##
@@ -162,7 +115,8 @@ app.get '/tweet', (req, res) ->
 app.get '/geo', (req, res) ->
   lat = parseFloat req.query.lat
   lon = parseFloat req.query.lon
-  lev = parseFloat req.query.lev || 5
+  lev = parseInt   req.query.lev || 5
+  acc = parseInt   req.query.acc || 10
   request "http://maps.googleapis.com/maps/api/geocode/json?latlng=#{lat},#{lon}&sensor=false", (err, response, json) ->
     json = JSON.parse json
     address = ''
@@ -174,10 +128,30 @@ app.get '/geo', (req, res) ->
     for addr, i in addresses
       break if i > 7-lev
       address = "#{address}, #{addr.trim()}"
-    console.log address
-    res.writeHead 200, 'Content-Type': 'application/json;charset=UTF-8'
-    res.end JSON.stringify { address: address }
-
+    latacc = (acc * 1 / Math.abs((2 * Math.PI * 6378.150) / 360)) / 2
+    lonacc = (acc * 1 / Math.abs(6378.150 * Math.cos(lon / 180 * Math.PI) * 2 * Math.PI / 360)) / 2
+    origin =
+      lon    : lon
+      lat    : lat
+      acc    : acc
+      lonacc : lonacc
+      latacc : latacc
+      bbox   : "#{lon-lonacc},#{lat-latacc},#{lon+lonacc},#{lat+latacc}"
+    query =
+      method  : 'flickr.photos.search'
+      api_key : 'f567abc72e617140f655e9bef2b5b902'
+      bbox    : origin.bbox
+      text    : 'photo'
+      format  : 'json'
+      nojsoncallback : 1
+    request "http://api.flickr.com/services/rest?#{qs.stringify(query)}", (err, response, json) ->
+      json = JSON.parse json
+      for photo, i in json.photos.photo
+        json.photos.photo[i].uri = farmUrl(photo)
+      res.writeHead 200, 'Content-Type': 'application/json;charset=UTF-8'
+      res.end JSON.stringify
+        address: address
+        photo  : json.photos.photo
 
 app.get '/throw', (req, res) ->
   lat = parseFloat req.query.lat
@@ -258,13 +232,7 @@ app.get '/flickr', (req, res) ->
       json.photos.photo[i].uri = farmUrl(photo)
     res.writeHead 200, 'Content-Type': 'application/json;charset=UTF-8'
     res.end JSON.stringify { photo: json.photos.photo }
-  ###
-  url = "http://api.flickr.com/services/rest?#{qs.stringify(query)}"
-  request uri: "http://api.flickr.com/services/rest?#{qs.stringify(query)}", (err, response, body) ->
-    json = JSON.parse body
-    res.writeHead 200, 'Content-Type': 'application/json'
-    res.end JSON.stringify data
-  ###
+
 
 ##==-- HTTP --==##
 
