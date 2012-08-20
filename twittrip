@@ -170,8 +170,8 @@ app.get '/geo', (req, res) ->
     addresses = (address.split ',').reverse()
     address = ''
     for addr, i in addresses
-      break if i < 7-lev
-      address = "#{address}, #{addr}"
+      break if i > 7-lev
+      address = "#{address}, #{addr.trim()}"
     res.writeHead 200, 'Content-Type': 'application/json;charset=UTF-8'
     res.end JSON.stringify { address: address }
 
