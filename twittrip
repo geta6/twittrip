@@ -203,7 +203,7 @@ app.get '/throw', (req, res) ->
 
   halfway = []
   splitted = distance / div
-  division = div -2
+  division = div - 2
   for p in [1...division]
     random = Math.random() * 6 - 3
     if p == 0
