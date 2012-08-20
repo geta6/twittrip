@@ -188,7 +188,7 @@ app.get '/throw', (req, res) ->
   toCorrectLon = (pos) ->
     quot = parseInt pos / 180
     odds = pos % 180
-    return quot % 2 ? odds : -1 * odds
+    return if quot % 2 then odds else -1 * odds
 
   toCorrectLat = (pos) ->
     quot = parseInt pos / 90
