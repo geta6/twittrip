@@ -120,8 +120,7 @@
             testMarker = new google.maps.Marker({
               position: testPos,
               title: "tweet from twitTrip",
-              animation: google.maps.Animation.DROP,
-              icon: flag
+              animation: google.maps.Animation.DROP
             });
 
           var infoWindow2 = new google.maps.InfoWindow();
