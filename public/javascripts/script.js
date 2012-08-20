@@ -170,7 +170,7 @@
             // debug.html(debug.html + " : " + geoInfo[i]);
           }
           if(gotGeo){
-            infoWindow2.setContent('<p>'geoInfo[1]'</p>' + '<p><img src="../images/5.jpg"/></p>');
+            infoWindow2.setContent('<p>'+geoInfo[1]+'</p>' + '<p><img src="../images/5.jpg"/></p>');
             infoWindow3.setContent(geoInfo[2]);
             infoWindow4.setContent(geoInfo[3]);
             infoWindow5.setContent(geoInfo[4]);
