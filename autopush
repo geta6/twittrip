@@ -5,8 +5,8 @@ if [[ $# -eq 0 ]]; then
   exit
 fi
 
-git commit -a -m $1
 git stash
 git pull --rebase
 git stash pop
+git commit -a -m $1
 git push
