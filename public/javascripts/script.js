@@ -19,6 +19,8 @@
   var currentIcon = '../images/transparent.png';
   var infoimage = [];
   var flag = "../images/beachflag.png";
+  var testPos;
+  var testMarker;
 
 
   $(function () {
@@ -116,6 +118,14 @@
             });
             alert(infoPos[i]);
           }
+            testPos = new google.maps.LatLng(35,135);
+            testMarker = new google.maps.Marker({
+              position: infoPos[0],
+              title: "tweet from twitTrip",
+              animation: google.maps.Animation.DROP,
+              icon: flag
+            });
+
           var infoWindow2 = new google.maps.InfoWindow();
           var infoWindow3 = new google.maps.InfoWindow();
           var infoWindow4 = new google.maps.InfoWindow();
