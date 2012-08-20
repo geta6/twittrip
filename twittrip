@@ -203,14 +203,9 @@ app.get '/throw', (req, res) ->
       return pos
 
   distance = toGeoUnit(pow * 100) # km
-  random = Math.random() * 1.5 - 0.5
-  landing =
-    lat: toCorrectLat(lat + (distance * Math.cos(deg * Math.PI / 180)) + random)
-    lon: toCorrectLon(lon + (distance * Math.sin(deg * Math.PI / 180)) + random)
-
-  halfway = []
   splitted = distance / div
-  division = div - 2
+  division = div - 1
+  halfway  = []
   for p in [1...division]
     random = Math.random() * 6 - 3
     if p is 1
@@ -225,7 +220,6 @@ app.get '/throw', (req, res) ->
   res.end JSON.stringify
     current: {lat: lat, lon: lon}
     halfway: halfway
-    landing: landing
 
 
 app.get '/pos', (req, res) ->
