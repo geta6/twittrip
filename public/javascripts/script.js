@@ -174,9 +174,9 @@
           }
           if(gotGeo){
             infoWindow2.setContent('<p>'+geoInfo[1]+'</p>' + '<p><img src="../images/5.jpg"/></p>');
-            infoWindow3.setContent(geoInfo[2]);
-            infoWindow4.setContent(geoInfo[3]);
-            infoWindow5.setContent(geoInfo[4]);
+            infoWindow3.setContent('<p>'+geoInfo[2]+'</p>' + '<p><img src="../images/5.jpg"/></p>');
+            infoWindow4.setContent('<p>'+geoInfo[3]+'</p>' + '<p><img src="../images/5.jpg"/></p>');
+            infoWindow5.setContent('<p>'+geoInfo[4]+'</p>' + '<p><img src="../images/5.jpg"/></p>');
           }
 
           // geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
