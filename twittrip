@@ -219,9 +219,8 @@ app.get '/throw', (req, res) ->
 
   distance = toGeoUnit(pow * 100) # km
   splitted = distance / div
-  division = div - 1
   halfway  = [{lat: lat, lon: lon}]
-  for p in [1...division]
+  for p in [1...div]
     random = Math.random() * 6 - 3
     if p is 1
       halfway.push
