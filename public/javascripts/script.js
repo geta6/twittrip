@@ -167,7 +167,7 @@ $(function () {
         });
 
         //clickable
-        google.maps.event.addListener(marker[0], 'click', function() {
+        google.maps.event.addListener(currentMarker, 'click', function() {
           currentInfo.open(map, currentMarker);
         });
 
