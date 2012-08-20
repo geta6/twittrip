@@ -107,7 +107,7 @@
             var location = floatingLocations[i];
             infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
             marker[i] = new google.maps.Marker({
-              position: infoPos[i],
+              position: infoPos[1],
               title: "tweet from twitTrip",
               animation: google.maps.Animation.DROP,
               icon: flag
