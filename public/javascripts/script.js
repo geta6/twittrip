@@ -80,8 +80,7 @@
         landingLon = Math.ceil((currentLon + movedDegree * Math.sin(heading * Math.PI/180))*100)/100;
         //add marker
         if(threw){
-          alert(landingLat);
-          alert(landingLon);
+
           //add route to landing Pos
           interval = Math.ceil((movedDegree / 5)*100)/100;
           for(i=1;i<4;i++){
@@ -93,6 +92,8 @@
             tempLat[i] = Math.ceil((tempLat[i-1]+interval)*100)/100;
             tempLon[i] = (Math.ceil((((currentLon - landingLon)/(currentLat - landingLat)) * ((currentLat + interval)-currentLat)+currentLon)*100)/100)+Math.ceil(Math.random()*100)/100;
           }
+          alert(tempLat[2]);
+          alert(tempLon[2]);
           //alert(tempLon[3]);
           //post to flickr
           //need to post
@@ -187,8 +188,6 @@
           google.maps.event.addListener(marker[4], 'click', function() {
             infoWindow5.open(map, marker[4]);
           });
-          alert(infoPos[i]);
-
           // after throw, stop rotate
           map_canvas.css({'-webkit-transform': 'rotate(' + (-1 * 0) + 'deg)'});
         }
