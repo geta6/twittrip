@@ -113,30 +113,30 @@
           var data = GetPoints(currentLat,currentLat,pow,heading);
           alert(data[0].lat);
           //add route to landing Pos
-          interval = Math.ceil((movedDegree / 5)*100)/100;
-          for(i=1;i<4;i++){
-            //liner function for the route
-            tempLat[0]=currentLat;
-            tempLon[0]=currentLon;
-            tempLat[4]=landingLat;
-            tempLon[4]=landingLon;
-            tempLat[i] = Math.ceil((tempLat[i-1]+interval)*100)/100;
-            tempLon[i] = (Math.ceil((((currentLon - landingLon)/(currentLat - landingLat)) * ((currentLat + interval)-currentLat)+currentLon)*100)/100)+Math.ceil(Math.random()*100)/100;
-          }
+          // interval = Math.ceil((movedDegree / 5)*100)/100;
+          // for(i=1;i<4;i++){
+          //   //liner function for the route
+          //   tempLat[0]=currentLat;
+          //   tempLon[0]=currentLon;
+          //   tempLat[4]=landingLat;
+          //   tempLon[4]=landingLon;
+          //   tempLat[i] = Math.ceil((tempLat[i-1]+interval)*100)/100;
+          //   tempLon[i] = (Math.ceil((((currentLon - landingLon)/(currentLat - landingLat)) * ((currentLat + interval)-currentLat)+currentLon)*100)/100)+Math.ceil(Math.random()*100)/100;
+          // }
 
           //post to flickr
           //need to post
           floatingLocations = [
-            ['current',tempLat[0],tempLon[0],1],
-            ['2',tempLat[1],tempLon[1],2],
-            ['3',tempLat[2],tempLon[2],3],
-            ['4',tempLat[3],tempLon[3],4],
-            ['landing',landingLat,landingLon,5]
+            ['1',data[0].lat,data[0].lon,1],
+            ['2',data[1].lat,data[1].lon,2],
+            ['3',data[2].lat,data[2].lon,3],
+            ['4',data[3].lat,data[3].lon,4],
+            ['5',data[4].lat,data[4].lon,5]
           ];
           for(i=0;i<floatingLocations.length;i++){
             var location = floatingLocations[i];
             //test
-            infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
+            infoPos[i] = new google.maps.LatLng(data[i].lat,data[i].lon);
             marker[i] = new google.maps.Marker({
               position: infoPos[i],
               title: "tweet from twitTrip",
@@ -145,14 +145,13 @@
               map: map
             });
           }
-          alert("test");
-            testPos = new google.maps.LatLng(35,135);
-            testMarker = new google.maps.Marker({
-              position: testPos,
-              title: "tweet from twitTrip",
-              animation: google.maps.Animation.DROP,
-              map: map
-            });
+            // testPos = new google.maps.LatLng(35,135);
+            // testMarker = new google.maps.Marker({
+            //   position: testPos,
+            //   title: "tweet from twitTrip",
+            //   animation: google.maps.Animation.DROP,
+            //   map: map
+            // });
 
           var infoWindow2 = new google.maps.InfoWindow();
           var infoWindow3 = new google.maps.InfoWindow();
