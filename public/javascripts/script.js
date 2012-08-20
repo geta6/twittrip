@@ -36,10 +36,7 @@
         alert('Something Error on GetPoints()');
       },
       success: function (data) {
-        points.push(data.current);
-        for (var i = 0; i < data.halfway.length; i++) {
-          points.push(data.halfway[i]);
-        }
+        points = data;
       }
     });
     return points;
