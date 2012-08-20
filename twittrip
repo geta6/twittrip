@@ -162,8 +162,9 @@ app.get '/geo', (req, res) ->
     json = JSON.parse json
     address = ''
     for result in json.results
-      console.log result
-      address = if address.length < result.formatted_address then result.formatted_address else address
+      format = result['formatted_address']
+      console.log result, format
+      address = if address.length < format.length then format else format
     console.log address
     res.writeHead 200, 'Content-Type': 'application/json;charset=UTF-8'
     res.end JSON.stringify json
