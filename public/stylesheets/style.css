@@ -9,26 +9,29 @@ body {
   font: 12px/1 Asap,Helvetica,Sans-Serif;
 }
 
+.navbar-fixed-top {
+  z-index: 200;
+}
+.navbar-inner {
+  opacity: 0.84;
+}
+.navbar-inner:hover {
+  opacity: 1.0;
+}
+
 #map_canvas {
   position: absolute;
-  top: 60px;
+  z-index: 100 !important;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   box-shadow: inside 0 0 6px 6px rgba(255, 255, 255, 0.72);
   -webkit-transform-origin: 50% 50%;
 }
-#string {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 50px;
-  line-height: 50px;
-  z-index: 99999;
-}
 
 #direction {
+  z-index: 150;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -42,10 +45,10 @@ body {
 }
 
 #location {
+  z-index: 250;
   position: fixed;
   left: 50%;
   top: 50%;
-  z-index: 300;
   width: 16px;
   height: 16px;
   background-image: url(/images/location.png);
