@@ -5,5 +5,5 @@ $(function () {
     active.fadeOut(360, function () {
       splash.fadeOut(240);
     });
-  }, 600);
+  }, 1200);
 });
