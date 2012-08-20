@@ -43,7 +43,7 @@ $(function () {
       infoWindow = [];
       infoPos = [];
       marker = [];
-      geoinfo = [];
+      geoInfo = [];
 
       var g = Math.abs(e.accelerationIncludingGravity.x) + Math.abs(e.accelerationIncludingGravity.y) + Math.abs(e.accelerationIncludingGravity.z);
       if (20 < g) {
@@ -100,14 +100,14 @@ $(function () {
             icon: flag
           });
           marker[i].setMap(map);
-
-          geoinfo[i].geocode({'latLng': infoPos[i]}, function(results, status) {
+          geoInfo = new google.maps.Geocoder();
+          geoInfo[i].geocode({'latLng': infoPos[i]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[5]) {
               map.setZoom(3);
-              infoWindow[i] = new google.maps.InfoWindow({content: results[5].formatted_address});
-              alert(results[5].formatted_address);
-              //infoWindow[3].setContent("hoge");
+              infoWindow[i] = new google.maps.InfoWindow();
+              //alert(results[5].formatted_address);
+              infoWindow[i].setContent(results[5].formatted_address);
               infoWindow[i].open(map, marker[i]);
             }
           } else {
