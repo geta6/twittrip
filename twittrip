@@ -181,7 +181,8 @@ app.get '/throw', (req, res) ->
   lon = parseFloat req.query.lon
   pow = parseFloat req.query.pow
   deg = parseFloat req.query.deg
-  div = parseFloat req.query.div || 5
+  lev = parseInt   req.query.lev || 5
+  div = parseInt   req.query.div || 5
 
   toGeoUnit = (km) ->
     km / 111
@@ -202,25 +203,43 @@ app.get '/throw', (req, res) ->
     else
       return pos
 
+  toGeoDecode = (lat, lon, callback) ->
+    request "http://maps.googleapis.com/maps/api/geocode/json?latlng=#{lat},#{lon}&sensor=false", (err, response, json) ->
+      json = JSON.parse json
+      address = ''
+      for result in json.results
+        format = String result['formatted_address']
+        address = if address.length < format.length then format else address
+      addresses = (address.split ',').reverse()
+      address = ''
+      for addr, i in addresses
+        break if i > 7-lev
+        address = "#{address}, #{addr.trim()}"
+      callback address
+
   distance = toGeoUnit(pow * 100) # km
   splitted = distance / div
   division = div - 1
-  halfway  = []
-  for p in [1...division]
-    random = Math.random() * 6 - 3
-    if p is 1
-      halfway.push
-        lat: toCorrectLat(lat + (splitted * Math.cos(deg * Math.PI / 180)) + random)
-        lon: toCorrectLon(lon + (splitted * Math.sin(deg * Math.PI / 180)) + random)
-    else
-      halfway.push
-        lat: toCorrectLat(halfway[halfway.length-1].lat + (splitted * Math.cos(deg * Math.PI / 180)) + random)
-        lon: toCorrectLon(halfway[halfway.length-1].lon + (splitted * Math.sin(deg * Math.PI / 180)) + random)
-
-  res.end JSON.stringify
-    current: {lat: lat, lon: lon}
-    halfway: halfway
-
+  halfway  = [{lat: lat, lon: lon}]
+  async.series [
+    () ->
+      for p in [1...division]
+        random = Math.random() * 6 - 3
+        if p is 1
+          halfway.push
+            lat: toCorrectLat(lat + (splitted * Math.cos(deg * Math.PI / 180)) + random)
+            lon: toCorrectLon(lon + (splitted * Math.sin(deg * Math.PI / 180)) + random)
+        else
+          halfway.push
+            lat: toCorrectLat(halfway[halfway.length-1].lat + (splitted * Math.cos(deg * Math.PI / 180)) + random)
+            lon: toCorrectLon(halfway[halfway.length-1].lon + (splitted * Math.sin(deg * Math.PI / 180)) + random)
+    , () ->
+      for half, i in halfway
+        toGeoDecode half.lat, half.lon, (address) ->
+          halfway[i].address = address
+  ], () ->
+    res.writeHead 200, 'Content-Type': 'application/json;charset=UTF-8'
+    res.end JSON.stringify halfway
 
 app.get '/pos', (req, res) ->
   lat = parseFloat req.query.lat
