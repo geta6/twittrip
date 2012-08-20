@@ -197,9 +197,10 @@ app.get '/throw', (req, res) ->
     return if quot % 2 then odds else -1 * odds
 
   distance = toGeoUnit(pow * 100) # km
+  random = Math.random() * 1.5 - 0.5
   landing =
-    lat: toCorrectLat(lat + (distance * Math.cos(deg * Math.PI / 180)))
-    lon: toCorrectLon(lon + (distance * Math.sin(deg * Math.PI / 180)))
+    lat: toCorrectLat(lat + (distance * Math.cos(deg * Math.PI / 180)) + random)
+    lon: toCorrectLon(lon + (distance * Math.sin(deg * Math.PI / 180)) + random)
 
   halfway = []
   splitted = distance / div
