@@ -214,21 +214,7 @@ app.get '/throw', (req, res) ->
       lon = toCorrectLon lon
     return { lat: lat, lon: lon }
 
-  toGeoDecode = (lat, lon, callback) ->
-    request "http://maps.googleapis.com/maps/api/geocode/json?latlng=#{lat},#{lon}&sensor=false", (err, response, json) ->
-      json = JSON.parse json
-      address = ''
-      for result in json.results
-        format = String result['formatted_address']
-        address = if address.length < format.length then format else address
-      addresses = (address.split ',').reverse()
-      address = ''
-      for addr, i in addresses
-        break if i > 7-lev
-        address = "#{address}, #{addr.trim()}"
-      callback address
-
-  distance = pow * 100 # km
+  distance = pow / 100
   halfway  = []
   for p in [0...div]
     random = Math.random() * 6 - 3
