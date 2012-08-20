@@ -153,7 +153,7 @@ $(function () {
         geocoder5.geocode({'latLng': infoPos[4]}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[6]) {
-              map.setZoom(4);
+              map.setZoom(6);
               infoWindow5.setContent(results[6].formatted_address);
               infoWindow5.open(map, marker[4]);
             }else{
