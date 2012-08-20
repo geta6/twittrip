@@ -18,6 +18,8 @@
   var threw = false;
   var currentIcon = '../images/transparent.png';
   var infoimage = [];
+  var flag = "../images/beachflag.png";
+
 
   $(function () {
 
@@ -43,7 +45,6 @@
     var direction;
     var floatDistance;
     var movedDegree;
-    var flag = "../images/beachflag.png";
     // limit 5 locations: if you obtain more than 5 locations, URL is too long and enable to write some messages.
     var floatingLocations;
     window.addEventListener('deviceorientation', function (e) {
