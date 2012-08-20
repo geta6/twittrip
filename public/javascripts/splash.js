@@ -1,10 +1,9 @@
 $(function () {
-  var splash = $('#splash')
-    , active = $('#spl_active');
+  var splash = $('#splash'), active = $('#spl_active');
 
-    setTimeout(function () {
-      active.fadeOut(360, function () {
-        splash.fadeOut(240);
-      })
-    }, 480);
+  setTimeout(function () {
+    active.fadeOut(360, function () {
+      splash.fadeOut(240);
+    });
+  }, 600);
 });
