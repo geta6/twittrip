@@ -20,22 +20,6 @@
   var infoimage = [];
 
   $(function () {
-
-    var GeoDecoder = function (lat, lon) {
-      var address = ''
-      $.ajax({
-        url: '/geo',
-        data: {lat: lat, lon: lon},
-        type: 'GET',
-        async: false,
-        dataType: 'json',
-        success: function (data) {
-          address = data.address
-        }
-      });
-      return address;
-    }
-
     var str  = $('#string')
     , map_canvas  = $('#map_canvas');
     var max = 0;
