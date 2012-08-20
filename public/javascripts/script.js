@@ -23,6 +23,7 @@
   var testMarker;
   var pow;
   var debug = $('#debug');
+  var gotGeo = false;
 
   var GetPoints = function (lat, lon, pow, deg, div) {
     div = div || 5;
@@ -164,6 +165,8 @@
 
           for(i=0;i<5;i++){
             geoInfo[i] = GeoDecoder(data[i].lat, data[i].lon);
+            alert(geoInfo[i]);
+            gotgeo = true;
             // debug.html(debug.html + " : " + geoInfo[i]);
           }
 
