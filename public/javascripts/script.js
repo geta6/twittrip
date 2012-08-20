@@ -108,6 +108,23 @@
           geocoder4 = new google.maps.Geocoder();
           geocoder5 = new google.maps.Geocoder();
 
+          var GeoDecoder = function (lat, lon) {
+            var address = ''
+            $.ajax({
+              url: '/geo',
+              data: {lat: tempLat[1], lon: tempLon[1]},
+              type: 'GET',
+              async: false,
+              dataType: 'json',
+              success: function (data) {
+                address = data.address
+              }
+            });
+            return address;
+          }
+
+          alert('test decoder: ' + GeoDecoder(35.54,139.48));
+
           geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               if (results[6]) {
