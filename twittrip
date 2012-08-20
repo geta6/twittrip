@@ -182,7 +182,7 @@ app.get '/throw', (req, res) ->
   lat = parseFloat req.query.lat
   lon = parseFloat req.query.lon
   pow = parseFloat req.query.pow
-  deg = Math.abs parseFloat req.query.deg
+  deg = 360 - (Math.abs parseFloat req.query.deg)
   lev = parseInt   req.query.lev || 5
   div = parseInt   req.query.div || 5
 
