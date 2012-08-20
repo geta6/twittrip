@@ -20,6 +20,26 @@
   var infoimage = [];
 
   $(function () {
+<<<<<<< Updated upstream
+=======
+
+    var GeoDecoder = function (lat, lon, lev) {
+      lev = lev || 5;
+      var address = ''
+      $.ajax({
+        url: '/geo',
+        data: {lat: lat, lon: lon, lev: lev},
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        success: function (data) {
+          address = data.address
+        }
+      });
+      return address;
+    }
+
+>>>>>>> Stashed changes
     var str  = $('#string')
     , map_canvas  = $('#map_canvas');
     var max = 0;
