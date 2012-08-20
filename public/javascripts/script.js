@@ -170,10 +170,10 @@
             // debug.html(debug.html + " : " + geoInfo[i]);
           }
           if(gotGeo){
-            infoWindow2.setContent(gotInfo[1]);
-            infoWindow3.setContent(gotInfo[2]);
-            infoWindow4.setContent(gotInfo[3]);
-            infoWindow5.setContent(gotInfo[4]);
+            infoWindow2.setContent(geoInfo[1]);
+            infoWindow3.setContent(geoInfo[2]);
+            infoWindow4.setContent(geoInfo[3]);
+            infoWindow5.setContent(geoInfo[4]);
           }
 
           // geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
