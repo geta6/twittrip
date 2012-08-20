@@ -78,13 +78,10 @@
         //set landing pos
         landingLat = Math.ceil(((currentLat + movedDegree) + movedDegree * Math.cos(heading * Math.PI/180))*100)/100;
         landingLon = Math.ceil((currentLon + movedDegree * Math.sin(heading * Math.PI/180))*100)/100;
-        alert(landingLat);
-        alert(landingLon);
-        // console.log("landing Pos:" + landingLat + ", " + landingLon);
-        // console.log("moved" + movedDegree);
-        // console.log("landing Pos:" + landingLat + ", " + landingLon);
         //add marker
         if(threw){
+          alert(landingLat);
+          alert(landingLon);
           //add route to landing Pos
           interval = Math.ceil((movedDegree / 5)*100)/100;
           for(i=1;i<4;i++){
