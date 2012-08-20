@@ -41,7 +41,9 @@
     });
     return points;
   }
-  alert(GetPoints(35,135,20,10,5));
+
+  var data = GetPoints(35,135,20,10,5);
+  alert(data[0], data[1], data[2], data[3], data[4]);
 
   var GeoDecoder = function (lat, lon, lev) {
     lev = lev || 5;
