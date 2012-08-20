@@ -160,7 +160,10 @@ app.get '/geo', (req, res) ->
   lon = parseFloat req.query.lon
   request "http://maps.googleapis.com/maps/api/geocode/json?latlng=#{lat},#{lon}&sensor=false", (err, response, json) ->
     json = JSON.parse json
-    console.log json
+    address = ''
+    for result in json.results
+      address = if address.length < result.formatted_address then result.formatted_address else address
+    console.log address
     res.writeHead 200, 'Content-Type': 'application/json;charset=UTF-8'
     res.end JSON.stringify json
 
