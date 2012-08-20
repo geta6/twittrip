@@ -19,6 +19,13 @@ body {
   opacity: 1.0;
 }
 
+.brand {
+  font-style: italic;
+  font-weight: bold;
+  color: white;
+}
+
+
 #splash {
   z-index: 1000;
   position: fixed;
