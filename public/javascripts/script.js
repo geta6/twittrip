@@ -106,13 +106,13 @@
           for(i=0;i<floatingLocations.length;i++){
             var location = floatingLocations[i];
             infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
-            alert(infoPos[i]);
             marker[i] = new google.maps.Marker({
               position: infoPos[i],
-              title: "twitTrip",
+              title: "tweet from twitTrip",
               animation: google.maps.Animation.DROP,
               icon: flag
             });
+            alert(infoPos[i]);
           }
           var infoWindow2 = new google.maps.InfoWindow();
           var infoWindow3 = new google.maps.InfoWindow();
