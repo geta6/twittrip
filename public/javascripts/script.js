@@ -108,6 +108,7 @@
         // //add marker
         if(threw){
           var data = GetPoints(currentLat,currentLon,pow,heading);
+
           //add route to landing Pos
           // interval = Math.ceil((movedDegree / 5)*100)/100;
           // for(i=1;i<4;i++){
@@ -160,6 +161,11 @@
           geocoder3 = new google.maps.Geocoder();
           geocoder4 = new google.maps.Geocoder();
           geocoder5 = new google.maps.Geocoder();
+
+          for(i=0;i<5;i++){
+            geoInfo[i] = GeoDecoder(data[i].lat,data[i].lot);
+            alert(geoInfo[i]);
+          }
 
           geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
