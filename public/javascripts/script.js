@@ -21,6 +21,7 @@
   var flag = "../images/beachflag.png";
   var testPos;
   var testMarker;
+  var pow;
 
 
   var GetPoints = function (lat, lon, pow, deg, div) {
@@ -41,9 +42,6 @@
     });
     return points;
   }
-
-  var data = GetPoints(35,135,20,10,5);
-  alert(data[0].lat);
 
   var GeoDecoder = function (lat, lon, lev) {
     lev = lev || 5;
@@ -90,12 +88,12 @@
 
     window.addEventListener('devicemotion', function (e) {
       if(threw == false){//throw only once
-        var tempLat = new Array(4);
-        var tempLon = new Array(4);
-        infoPos = [];
-        marker = [];
-        infoWin = [];
-        geoInfo = [];
+        // var tempLat = new Array(4);
+        // var tempLon = new Array(4);
+        // infoPos = [];
+        // marker = [];
+        // infoWin = [];
+        // geoInfo = [];
         var g = Math.abs(e.accelerationIncludingGravity.x) + Math.abs(e.accelerationIncludingGravity.y) + Math.abs(e.accelerationIncludingGravity.z);
         if (20 < g) {
           max = (g > max) ? g : max;//適当に*10して単位はkm
@@ -103,15 +101,17 @@
           floatDistance = Math.ceil(max*100); // tune up the parameter
           //alert(floatDistance +'kmほど漂いました');
           threw = true;
+          pow = max*100;
           max = 0;
         }
-        movedDegree = floatDistance / 111;
-        //set landing pos
-        landingLat = Math.ceil(((currentLat + movedDegree) + movedDegree * Math.cos(heading * Math.PI/180))*100)/100;
-        landingLon = Math.ceil((currentLon + movedDegree * Math.sin(heading * Math.PI/180))*100)/100;
-        //add marker
+        // movedDegree = floatDistance / 111;
+        // //set landing pos
+        // landingLat = Math.ceil(((currentLat + movedDegree) + movedDegree * Math.cos(heading * Math.PI/180))*100)/100;
+        // landingLon = Math.ceil((currentLon + movedDegree * Math.sin(heading * Math.PI/180))*100)/100;
+        // //add marker
         if(threw){
-
+          var data = GetPoints(currentLat,currentLat,pow,heading);
+          alert(data[0].lat);
           //add route to landing Pos
           interval = Math.ceil((movedDegree / 5)*100)/100;
           for(i=1;i<4;i++){
