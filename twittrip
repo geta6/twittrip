@@ -146,14 +146,19 @@ app.get '/geo', (req, res) ->
       nojsoncallback : 1
     request "http://api.flickr.com/services/rest?#{qs.stringify(query)}", (err, response, json) ->
       json = JSON.parse json
-      for photo, i in json.photos.photo
-        json.photos.photo[i].uri = farmUrl(photo)
-      random = ~~(Math.random * json.photos.photo.length)
-      #console.log json.photos.photo
-      response = "<p>#{address}</p><p><img class='flickr_image' src='#{json.photos.photo[random].uri}'></p>"
-      console.log response
-      res.writeHead 200, 'Content-Type': 'text/plain;charset=UTF-8'
-      res.end response
+      if json.photos.photo
+        for photo, i in json.photos.photo
+          json.photos.photo[i].uri = farmUrl(photo)
+        random = ~~(Math.random * json.photos.photo.length)
+        #console.log json.photos.photo
+        response = "<p>#{address}</p><p><img class='flickr_image' src='#{json.photos.photo[random].uri}'></p>"
+        console.log response
+        res.writeHead 200, 'Content-Type': 'text/plain;charset=UTF-8'
+        res.end response
+      else
+        response = "<p>#{address}</p><p><img class='flickr_image' src='/images/5.jpg'></p>"
+        res.writeHead 200, 'Content-Type': 'text/plain;charset=UTF-8'
+        res.end response
 
 app.get '/throw', (req, res) ->
   lat = parseFloat req.query.lat
