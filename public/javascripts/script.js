@@ -171,6 +171,7 @@
           google.maps.event.addListener(marker[4], 'click', function() {
             infoWindow5.open(map, marker[4]);
           });
+          alert(infoPos[i]);
 
           // after throw, stop rotate
           map_canvas.css({'-webkit-transform': 'rotate(' + (-1 * 0) + 'deg)'});
