@@ -23,23 +23,51 @@
   var testMarker;
 
 
-  $(function () {
-
-    var GeoDecoder = function (lat, lon, lev) {
-      lev = lev || 5;
-      var address = ''
-      $.ajax({
-        url: '/geo',
-        data: {lat: lat, lon: lon, lev: lev},
-        type: 'GET',
-        async: false,
-        dataType: 'json',
-        success: function (data) {
-          address = data.address
+  var GetPoints = function (lat, lon, pow, deg, div) {
+    div = div || 5;
+    var points = [];
+    $.ajax({
+      url: '/throw',
+      data: {lat:lat, lon:lon, pow:pow, deg:deg, div:div},
+      type: 'GET',
+      async: false,
+      dataType: 'json',
+      error: function (e) {
+        alert('Something Error on GetPoints()');
+      },
+      success: function (data) {
+        points.push(data.current);
+        for (var i = 0; i < data.halfway.length; i++) {
+          points.push(data.halfway[i]);
         }
-      });
-      return address;
-    }
+      }
+    });
+    return points;
+  }
+
+  var GeoDecoder = function (lat, lon, lev) {
+    lev = lev || 5;
+    var address = ''
+    $.ajax({
+      url: '/geo',
+      data: {lat: lat, lon: lon, lev: lev},
+      type: 'GET',
+      async: false,
+      dataType: 'json',
+      error: function (e) {
+        alert('Something Error on GeoDecoder()');
+      },
+      success: function (data) {
+        address = data.address
+      }
+    });
+    return address;
+  }
+
+
+
+
+  $(function () {
 
     var str  = $('#string')
     , map_canvas  = $('#map_canvas');
