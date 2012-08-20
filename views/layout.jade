@@ -4,8 +4,8 @@ html
     meta(charset='utf-8')
     meta(name='viewport', content='initial-scale=1.0,user-scalable=no')
     title TwitTrip
+    link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic')
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
-    link(rel='stylesheet', href='//yui.yahooapis.com/3.5.1/build/cssreset/cssreset-min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.min.css')
     script(src="https://maps.googleapis.com/maps/api/js?sensor=true")
@@ -13,4 +13,19 @@ html
     script(src='/javascripts/bootstrap.min.js')
     script(src='/javascripts/script.js')
   body
-    block content
+    nav.navbar.navbar-fixed-top
+      div.navbar-inner
+        div.container-fluid
+          a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand(href='/') TwitTrip β
+          ul.nav.pull-right
+            li.divider-vertical
+            li#indication.dropdown
+          div.nav-collapse
+            ul.nav
+              li: a(href='#about') about
+    div.container
+      block content
