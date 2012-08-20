@@ -183,7 +183,8 @@
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         navigationControl: false,
         mapTypeControl: false,
-        scaleControl: false
+        scaleControl: false,
+        streetViewControl: false
       };
       map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
