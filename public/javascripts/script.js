@@ -170,12 +170,6 @@ $(function () {
     }
   }, false);
 
-google.maps.event.addEventListener(marker[1],'click',function(){
-  alert("clicked");
-});
-
-
-
   //set map
   function initialize() {
     mapOptions = { zoom: 6, mapTypeId: google.maps.MapTypeId.ROADMAP };
