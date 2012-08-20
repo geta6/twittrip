@@ -208,7 +208,7 @@
           currentMarker = new google.maps.Marker({
             map: map,
             position: pos,
-            icon:flag,
+            icon:currentIcon,
             animation: google.maps.Animation.DROP
           });
           currentMarker.setMap(map);
@@ -224,6 +224,13 @@
             google.maps.event.addListener(currentMarker, 'click', function() {
               currentInfo.open(map, currentMarker);
             });
+
+            //simulate click
+            var locIcon = document.getElementById("location");
+            google.maps.event.addDomListener(locIcon, "click", function(){
+              google.maps.event.trigger(currentMarker, "click");
+            });
+
           });
           // todo:reverse geocoding
 
