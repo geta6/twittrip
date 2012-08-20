@@ -13,6 +13,7 @@ html
     script(src='/javascripts/bootstrap.min.js')
     script(src='/javascripts/script.js')
   body
+    div#map_canvas
     nav.navbar.navbar-fixed-top
       div.navbar-inner
         div.container-fluid
@@ -27,6 +28,5 @@ html
           div.nav-collapse
             ul.nav
               li: a(href='#about') about
-    div#map_canvas
     div.container-fluid
       block content
