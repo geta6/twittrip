@@ -90,7 +90,7 @@
           ];
           for(i=0;i<floatingLocations.length;i++){
             var location = floatingLocations[i];
-            infoPos[i] = new google.maps.LatLng(Math.ceil(tempLat[i]),Math.ceil(tempLon[i]);
+            infoPos[i] = new google.maps.LatLng(Math.ceil(tempLat[i]),Math.ceil(tempLon[i]));
             marker[i] = new google.maps.Marker({
               position: infoPos[i],
               title: "twitTrip",
