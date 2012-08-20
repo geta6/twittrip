@@ -116,6 +116,7 @@
               icon: flag
             });
           }
+          alert("test");
             testPos = new google.maps.LatLng(35,135);
             testMarker = new google.maps.Marker({
               position: testPos,
