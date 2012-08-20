@@ -113,7 +113,8 @@
               position: infoPos[i],
               title: "tweet from twitTrip",
               animation: google.maps.Animation.DROP,
-              icon: flag
+              icon: flag,
+              map: map
             });
           }
           alert("test");
