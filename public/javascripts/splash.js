@@ -1,8 +1,8 @@
 $(function () {
-  var splash = $('#splash'), active = $('#spl_active');
+  var splash = $('#splash'), inactive = $('#spl_inactive');
 
   setTimeout(function () {
-    active.fadeOut(360, function () {
+    inactive.fadeOut(360, function () {
       splash.fadeOut(240);
     });
   }, 1200);
