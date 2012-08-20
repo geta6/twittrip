@@ -20,6 +20,7 @@
   var infoimage = [];
 
   $(function () {
+
     var GeoDecoder = function (lat, lon) {
       var address = ''
       $.ajax({
@@ -34,9 +35,6 @@
       });
       return address;
     }
-
-    alert('test decoder: ' + GeoDecoder(35.54,139.48));
-
 
     var str  = $('#string')
     , map_canvas  = $('#map_canvas');
