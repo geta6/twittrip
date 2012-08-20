@@ -182,7 +182,7 @@ app.get '/throw', (req, res) ->
   lat = parseFloat req.query.lat
   lon = parseFloat req.query.lon
   pow = parseFloat req.query.pow
-  deg = parseFloat req.query.deg
+  deg = Math.abs parseFloat req.query.deg
   lev = parseInt   req.query.lev || 5
   div = parseInt   req.query.div || 5
 
@@ -214,7 +214,7 @@ app.get '/throw', (req, res) ->
       lon = toCorrectLon lon
     return { lat: lat, lon: lon }
 
-  distance = pow / 100
+  distance = pow / 50
   halfway  = []
   for p in [0...div]
     random = Math.random() * 6 - 3
