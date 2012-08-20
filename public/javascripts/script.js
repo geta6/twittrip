@@ -113,7 +113,7 @@
           geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               if (results[7]) {
-                var contentStr = '<p>' +results[7].formatted_address + '<img src="../images/5.jpg" /></p>';
+                var contentStr = '<p>' +results[7].formatted_address + '<img src="../images/5.jpg"/></p>';
                 infoWindow2.setContent(results[7].formatted_address);
                 //infoWindow2.open(map, marker[1]);
               }else{
