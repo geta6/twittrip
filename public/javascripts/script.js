@@ -169,7 +169,7 @@
             gotGeo = true;
             // debug.html(debug.html + " : " + geoInfo[i]);
           }
-          if(gotgeo){
+          if(gotGeo){
             infoWindow2.setContent(gotInfo[1]);
             infoWindow3.setContent(gotInfo[2]);
             infoWindow4.setContent(gotInfo[3]);
