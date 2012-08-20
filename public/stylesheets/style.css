@@ -62,6 +62,10 @@ body {
   -webkit-transform-origin: 50% 50%;
 }
 
+.flickr_image {
+  width: 240px;
+}
+
 #direction {
   z-index: 150;
   position: fixed;
