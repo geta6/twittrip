@@ -46,7 +46,7 @@
 
   var GeoDecoder = function (lat, lon, lev) {
     lev = lev || 5;
-    var address = ''
+    var res = {}
     $.ajax({
       url: '/geo',
       data: {lat: lat, lon: lon, lev: lev},
@@ -57,10 +57,12 @@
         alert('Something Error on GeoDecoder()');
       },
       success: function (data) {
-        address = data.address
+        res = data
       }
     });
-    return address;
+    return res;
+    // res.address -> address
+    // res.photo   -> [photo]
   }
 
   $(function () {
