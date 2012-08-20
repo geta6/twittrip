@@ -178,7 +178,7 @@ app.get '/geo', (req, res) ->
 
 app.get '/throw', (req, res) ->
   lat = parseFloat req.query.lat
-  lon = parseFloat req.quert.lon
+  lon = parseFloat req.query.lon
   pow = parseFloat req.query.pow
   deg = parseFloat req.query.deg
 
