@@ -163,9 +163,11 @@ $(function () {
           }
         });
         //todo:add clickable
-        google.maps.event.addListener(marker[1], 'click', function() {
-          alert("hoge");
-        });
+        for(i=0;i<5;i++){
+          google.maps.event.addListener(marker[1], 'click', function() {
+            alert("hoge");
+          });
+        }
 
 
         // after throw, stop rotate
