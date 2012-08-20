@@ -24,7 +24,7 @@
       var address = ''
       $.ajax({
         url: '/geo',
-        data: {lat: tempLat[1], lon: tempLon[1]},
+        data: {lat: lat, lon: lon},
         type: 'GET',
         async: false,
         dataType: 'json',
