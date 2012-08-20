@@ -19,7 +19,7 @@ body {
   opacity: 1.0;
 }
 
-.splash {
+#splash {
   z-index: 1000;
   position: fixed;
   top: 0;
