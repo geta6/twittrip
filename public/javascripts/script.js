@@ -15,7 +15,7 @@
   var heading;
   var interval;
   var threw = false;
-  var currentIcon = "../images/location.png";
+  var currentIcon = "";
   $(function () {
     var str  = $('#string')
     , map_canvas  = $('#map_canvas');
@@ -109,10 +109,10 @@
             if (status == google.maps.GeocoderStatus.OK) {
               if (results[6]) {
                 infoWindow2.setContent(results[6].formatted_address);
-                infoWindow2.open(map, marker[1]);
+                //infoWindow2.open(map, marker[1]);
               }else{
                 infoWindow2.setContent("null");
-                infoWindow2.open(map, marker[1]);
+                //infoWindow2.open(map, marker[1]);
               }
             }
           });
@@ -120,10 +120,10 @@
             if (status == google.maps.GeocoderStatus.OK) {
               if (results[6]) {
                 infoWindow3.setContent(results[6].formatted_address);
-                infoWindow3.open(map, marker[2]);
+                //infoWindow3.open(map, marker[2]);
               }else{
                 infoWindow3.setContent("null");
-                infoWindow3.open(map, marker[2]);
+                //infoWindow3.open(map, marker[2]);
               }
             }
           });
@@ -131,10 +131,10 @@
             if (status == google.maps.GeocoderStatus.OK) {
               if (results[6]) {
                 infoWindow4.setContent(results[6].formatted_address);
-                infoWindow4.open(map, marker[3]);
+                //infoWindow4.open(map, marker[3]);
               }else{
                 infoWindow4.setContent("null");
-                infoWindow4.open(map, marker[3]);
+                //infoWindow4.open(map, marker[3]);
               }
             }
           });
@@ -143,10 +143,10 @@
               if (results[6]) {
                 map.setZoom(5);
                 infoWindow5.setContent(results[6].formatted_address);
-                infoWindow5.open(map, marker[4]);
+                //infoWindow5.open(map, marker[4]);
               }else{
                 infoWindow5.setContent("null");
-                infoWindow5.open(map, marker[4]);
+                //infoWindow5.open(map, marker[4]);
               }
             }
           });
