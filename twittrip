@@ -185,11 +185,21 @@ app.get '/throw', (req, res) ->
   toGeoUnit = (km) ->
     km / 111
 
+  toCorrectLon = (pos) ->
+    quot = parseInt pos / 180
+    odds = pos % 180
+    return quot % 2 ? odds : -1 * odds
+
+  toCorrectLat = (pos) ->
+    quot = parseInt pos / 90
+    odds = pos % 90
+    return quot % 2 ? odds : -1 * odds
+
   distance = pow * 100 # km
 
   landing =
-    lat: lat + (toGeoUnit(distance) * Math.cos(deg * Math.PI / 180))
-    lon: lon + (toGeoUnit(distance) * Math.sin(deg * Math.PI / 180))
+    lat: toCorrectLat(lat + (toGeoUnit(distance) * Math.cos(deg * Math.PI / 180)))
+    lon: toCorrectLon(lon + (toGeoUnit(distance) * Math.sin(deg * Math.PI / 180)))
 
   res.end JSON.stringify landing
 
