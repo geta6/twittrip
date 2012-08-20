@@ -173,10 +173,14 @@
             // debug.html(debug.html + " : " + geoInfo[i]);
           }
           if(gotGeo){
-            infoWindow2.setContent(geoInfo[1]);
-            infoWindow3.setContent(geoInfo[2]);
-            infoWindow4.setContent(geoInfo[3]);
-            infoWindow5.setContent(geoInfo[4]);
+            // infoWindow2.setContent(geoInfo[1]);
+            // infoWindow3.setContent(geoInfo[2]);
+            // infoWindow4.setContent(geoInfo[3]);
+            // infoWindow5.setContent(geoInfo[4]);
+            infoWindow2.setContent("hoge");
+            infoWindow3.setContent("hoge");
+            infoWindow4.setContent("hoge");
+            infoWindow5.setContent("hoge");
           }
 
           // geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
