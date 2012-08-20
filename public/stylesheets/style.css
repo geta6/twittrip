@@ -11,9 +11,11 @@ body {
 
 .navbar-fixed-top {
   z-index: 200;
+}
+.navbar-inner {
   opacity: 0.84;
 }
-.navbar-fixed-top:hover {
+.navbar-inner:hover {
   opacity: 1.0;
 }
 
