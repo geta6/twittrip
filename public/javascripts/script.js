@@ -52,7 +52,7 @@
       data: {lat: lat, lon: lon, lev: lev},
       type: 'GET',
       async: false,
-      dataType: 'json',
+      dataType: 'text',
       error: function (e) {
         alert('Something Error on GeoDecoder()');
       },

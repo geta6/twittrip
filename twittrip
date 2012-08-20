@@ -148,10 +148,9 @@ app.get '/geo', (req, res) ->
       json = JSON.parse json
       for photo, i in json.photos.photo
         json.photos.photo[i].uri = farmUrl(photo)
-      res.writeHead 200, 'Content-Type': 'application/json;charset=UTF-8'
-      res.end JSON.stringify
-        address: address
-        photo  : json.photos.photo
+      random = ~~(Math.random * json.photos.photo.length)
+      res.writeHead 200, 'Content-Type': 'text/plain;charset=UTF-8'
+      res.end "<p>#{address}</p><p><img class='flickr_image' src='#{json.photos.photo[random].url}'</p>"
 
 app.get '/throw', (req, res) ->
   lat = parseFloat req.query.lat
