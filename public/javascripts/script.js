@@ -163,7 +163,7 @@
           geocoder5 = new google.maps.Geocoder();
 
           for(i=0;i<5;i++){
-            geoInfo[i] = GeoDecoder(data[i].lat, data[i].lot);
+            geoInfo[i] = GeoDecoder(data[i].lat, data[i].lon);
             debug.html(debug.html + " : " + geoInfo[i]);
           }
 
