@@ -90,13 +90,15 @@
           for(i=0;i<floatingLocations.length;i++){
             var location = floatingLocations[i];
             infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
+
             marker[i] = new google.maps.Marker({
               position: infoPos[i],
               title: "twitTrip",
               animation: google.maps.Animation.DROP,
               icon: flag
             });
-            marker[i].setMap(map);
+            setInterval(function(){marker[i].setMap(map);},500);
+
           }
           var infoWindow2 = new google.maps.InfoWindow();
           var infoWindow3 = new google.maps.InfoWindow();
