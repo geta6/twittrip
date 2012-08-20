@@ -188,8 +188,8 @@ app.get '/throw', (req, res) ->
   distance = pow * 100 # km
 
   landing =
-    lat: lat + (toGeoUnit(distance) * Math.cos(deg))
-    lon: lon + (toGeoUnit(distance) * Math.sin(deg))
+    lat: lat + (toGeoUnit(distance) * Math.cos(deg * Math.PI / 180))
+    lon: lon + (toGeoUnit(distance) * Math.sin(deg * Math.PI / 180))
 
   res.end JSON.stringify landing
 
