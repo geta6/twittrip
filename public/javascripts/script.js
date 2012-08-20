@@ -148,6 +148,21 @@
             // infoWin[i] = new google.maps.InfoWindow();
             // geoInfo[i] = new google.maps.Geocoder();
           }
+          var flightCoordinates = [
+            infoPos[0],
+            infoPos[1],
+            infoPos[2],
+            infoPos[3],
+            infoPos[4]
+          ];
+          var flightPath = new google.maps.Polyline({
+            path: flightPlanCoordinates,
+            strokeColor: "#6666FF",
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+          });
+
+          flightPath.setMap(map);
             // testPos = new google.maps.LatLng(35,135);
             // testMarker = new google.maps.Marker({
             //   position: testPos,
