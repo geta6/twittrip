@@ -146,8 +146,7 @@ app.get '/geo', (req, res) ->
       nojsoncallback : 1
     request "http://api.flickr.com/services/rest?#{qs.stringify(query)}", (err, response, json) ->
       json = JSON.parse json
-      console.log json.photos.photo
-      if json.photos.photo
+      if 0 < json.photos.photo.length
         for photo, i in json.photos.photo
           json.photos.photo[i].uri = farmUrl(photo)
         random = ~~(Math.random * json.photos.photo.length)
