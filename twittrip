@@ -144,6 +144,7 @@ farmUrl = (data) ->
 String.prototype.trim = () ->
   @.replace /^[ \n\r\t]+|[ \n\r\t]+$/g, ''
 
+
 app.get '/tweet', (req, res) ->
   lat = req.query.lat
   lon = req.query.lon
@@ -156,6 +157,7 @@ app.get '/tweet', (req, res) ->
       data.user.push tweet['from_user']
     data.origin = json
     res.end JSON.stringify data
+
 
 app.get '/geo', (req, res) ->
   lat = parseFloat req.query.lat
@@ -184,8 +186,12 @@ app.get '/throw', (req, res) ->
   lev = parseInt   req.query.lev || 5
   div = parseInt   req.query.div || 5
 
-  toGeoUnit = (km) ->
-    km / 111
+  # ~ : ? = 1 : km
+  toLatFromDistDiff = (km) ->
+    km / Math.abs((2 * Math.PI * 6378.150) / 360)
+
+  toLonFromDistDiff = (km, lon) ->
+    km / Math.abs(6378.150 * Math.cos(lon / 180 * Math.PI) * 2 * Math.PI / 360)
 
   toCorrectLat = (pos) ->
     if pos > 90
@@ -222,25 +228,24 @@ app.get '/throw', (req, res) ->
         address = "#{address}, #{addr.trim()}"
       callback address
 
-  distance = toGeoUnit(pow * 100) # km
-  splitted = distance / div
+  distance = pow * 100 # km
   halfway  = []
   for p in [0...div]
     random = Math.random() * 6 - 3
     if p is 0
       halfway.push toCorrectGeo lat, lon
     else
-      halflat = halfway[halfway.length-1].lat + (splitted * Math.cos(deg * Math.PI / 180)) + random
-      halflon = halfway[halfway.length-1].lon + (splitted * Math.sin(deg * Math.PI / 180)) + random
+      halflat = halfway[halfway.length-1].lat + ((toLatFromDistDiff(distance) / div) * Math.cos(deg * Math.PI / 180)) + random
+      halflon = halfway[halfway.length-1].lon + ((toLatFromDistDiff(distance, halfway[halfway.length-1].lon) / div) * Math.sin(deg * Math.PI / 180)) + random
       halfway.push toCorrectGeo halflat, halflon
   res.writeHead 200, 'Content-Type': 'application/json;charset=UTF-8'
   res.end JSON.stringify halfway
 
-app.get '/pos', (req, res) ->
+
+app.get '/flickr', (req, res) ->
   lat = parseFloat req.query.lat
   lon = parseFloat req.query.lon
   acc = parseFloat req.query.acc || 10
-  # ? : 誤差 = いちど : 111
   tolat  = Math.abs((2 * Math.PI * 6378.150) / 360)
   tolon  = Math.abs(6378.150 * Math.cos(lon / 180 * Math.PI) * 2 * Math.PI / 360)
   latacc = (acc * 1 / tolat) / 2
@@ -264,7 +269,7 @@ app.get '/pos', (req, res) ->
     for photo, i in json.photos.photo
       json.photos.photo[i].uri = farmUrl(photo)
     res.writeHead 200, 'Content-Type': 'application/json;charset=UTF-8'
-    res.end JSON.stringify { origin: origin, flickr: json }
+    res.end JSON.stringify { photo: json.photos.photo }
   ###
   url = "http://api.flickr.com/services/rest?#{qs.stringify(query)}"
   request uri: "http://api.flickr.com/services/rest?#{qs.stringify(query)}", (err, response, body) ->
