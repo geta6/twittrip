@@ -175,6 +175,25 @@ app.get '/geo', (req, res) ->
     res.writeHead 200, 'Content-Type': 'application/json;charset=UTF-8'
     res.end JSON.stringify { address: address }
 
+
+app.get '/throw', (req, res) ->
+  lat = parseFloat req.query.lat
+  lon = parseFloat req.quert.lon
+  pow = parseFloat req.query.pow
+  deg = parseFloat req.query.deg
+
+  toGeoUnit = (km) ->
+    km / 111
+
+  distance = pow * 100 # km
+
+  landing =
+    lat: lat + (toGeoUnit(distance) * Math.cos(deg))
+    lon: lon + (toGeoUnit(distance) * Math.sin(deg))
+
+  res.end JSON.stringify landing
+
+
 app.get '/pos', (req, res) ->
   lat = parseFloat req.query.lat
   lon = parseFloat req.query.lon
