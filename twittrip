@@ -164,9 +164,8 @@ app.get '/geo', (req, res) ->
     for result in json.results
       format = String result['formatted_address']
       address = if address.length < format.length then format else address
-    console.log '---\n', address, '\n'
     res.writeHead 200, 'Content-Type': 'application/json;charset=UTF-8'
-    res.end JSON.stringify json
+    res.end JSON.stringify { address: address }
 
 app.get '/pos', (req, res) ->
   lat = parseFloat req.query.lat
