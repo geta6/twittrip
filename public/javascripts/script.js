@@ -6,6 +6,9 @@ var geocoder3;
 var geocoder4;
 var geocoder5;
 
+var currentInfo;
+var currentMarker;
+
 
 var currentLat;
 var currentLon;
@@ -162,12 +165,11 @@ $(function () {
             }
           }
         });
-        //todo:add clickable
-        for(i=0;i<5;i++){
-          google.maps.event.addListener(marker[1], 'click', function() {
-            alert("hoge");
-          });
-        }
+
+        //clickable
+        google.maps.event.addListener(marker[0], 'click', function() {
+          currentInfo.open(map, currentMarker);
+        });
 
 
         // after throw, stop rotate
@@ -186,23 +188,20 @@ $(function () {
       geocoder = new google.maps.Geocoder();
       navigator.geolocation.getCurrentPosition(function(position) {
         var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        var currentMarker = new google.maps.Marker({
+        currentMarker = new google.maps.Marker({
           map: map,
           position: pos,
           icon:flag,
           animation: google.maps.Animation.DROP
         });
         currentMarker.setMap(map);
-        var currentInfo = new google.maps.InfoWindow();
+        currentInfo = new google.maps.InfoWindow();
         geocoder.geocode({'latLng': pos}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[6]) {
               map.setZoom(6);
               currentInfo.setContent(results[6].formatted_address);
-              currentInfo.open(map, currentMarker);
             }
-          } else {
-            alert("Geocoder failed due to: " + status);
           }
         });
 // todo:reverse geocoding
