@@ -201,7 +201,7 @@
           currentMarker = new google.maps.Marker({
             map: map,
             position: pos,
-            icon:currentIcon,
+            icon:flag,
             animation: google.maps.Animation.DROP
           });
           currentMarker.setMap(map);
