@@ -14,6 +14,7 @@
   var landingLon;
   var heading;
   var interval;
+  var instanceOfInterval;
   var threw = false;
   $(function () {
     var str  = $('#string')
@@ -176,6 +177,17 @@
       map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
       if(navigator.geolocation) {
+        instanceOfInterval = setInterval(function () {
+          if (threw) {
+            clearInterval(instanceOfInterval);
+            $('#direction, #location').fadeOut(240);
+          }
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            map.setCenter(pos);
+          });
+        }, 1000);
+
         geocoder = new google.maps.Geocoder();
         navigator.geolocation.getCurrentPosition(function(position) {
 
