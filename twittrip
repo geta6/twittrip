@@ -187,17 +187,26 @@ app.get '/throw', (req, res) ->
   toGeoUnit = (km) ->
     km / 111
 
-  toCorrectLon = (pos) ->
-    if pos > 180
-      pos = -1 * pos
-    return pos
-
   toCorrectLat = (pos) ->
     if pos > 90
       pos = 180 - pos
     else if -90 > pos
       pos = -1 * (180 + pos)
     return pos
+
+  toCorrectLon = (pos) ->
+    if pos > 180
+      pos = -1 * pos
+    return pos
+
+  toCorrectGeo = (lat, lon) ->
+    if lat > 90 or lat < -90
+      lat = toCorrectLat lat
+      lon = toCorrectLon lon - 180
+    if lon < 180 or lon > -180
+      lat = toCorrectLat lat
+      lon = toCorrectLon lon
+    return { lat: lat, lon: lon }
 
   toGeoDecode = (lat, lon, callback) ->
     request "http://maps.googleapis.com/maps/api/geocode/json?latlng=#{lat},#{lon}&sensor=false", (err, response, json) ->
@@ -215,17 +224,15 @@ app.get '/throw', (req, res) ->
 
   distance = toGeoUnit(pow * 100) # km
   splitted = distance / div
-  halfway  = [{lat: lat, lon: lon}]
-  for p in [1...div]
+  halfway  = []
+  for p in [0...div]
     random = Math.random() * 6 - 3
-    if p is 1
-      halfway.push
-        lat: toCorrectLat(lat + (splitted * Math.cos(deg * Math.PI / 180)) + random)
-        lon: toCorrectLon(lon + (splitted * Math.sin(deg * Math.PI / 180)) + random)
+    if p is 0
+      halfway.push toCorrectGeo lat, lon
     else
-      halfway.push
-        lat: toCorrectLat(halfway[halfway.length-1].lat + (splitted * Math.cos(deg * Math.PI / 180)) + random)
-        lon: toCorrectLon(halfway[halfway.length-1].lon + (splitted * Math.sin(deg * Math.PI / 180)) + random)
+      halflat = halfway[halfway.length-1].lat + (splitted * Math.cos(deg * Math.PI / 180)) + random
+      halflon = halfway[halfway.length-1].lon + (splitted * Math.sin(deg * Math.PI / 180)) + random
+      halfway.push toCorrectGeo halflat, halflon
   res.writeHead 200, 'Content-Type': 'application/json;charset=UTF-8'
   res.end JSON.stringify halfway
 
