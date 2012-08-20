@@ -92,8 +92,7 @@
             tempLat[i] = Math.ceil((tempLat[i-1]+interval)*100)/100;
             tempLon[i] = (Math.ceil((((currentLon - landingLon)/(currentLat - landingLat)) * ((currentLat + interval)-currentLat)+currentLon)*100)/100)+Math.ceil(Math.random()*100)/100;
           }
-          alert(tempLat[2]);
-          alert(tempLon[2]);
+
           //alert(tempLon[3]);
           //post to flickr
           //need to post
@@ -107,7 +106,8 @@
           for(i=0;i<floatingLocations.length;i++){
             var location = floatingLocations[i];
             infoPos[i] = new google.maps.LatLng(tempLat[i],tempLon[i]);
-
+            alert(tempLat[i]);
+            alert(tempLon[i]);
             marker[i] = new google.maps.Marker({
               position: infoPos[i],
               title: "twitTrip",
