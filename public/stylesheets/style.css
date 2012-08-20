@@ -40,12 +40,12 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-left: -162px;
-  margin-top: -180px;
+  margin-left: -183.75px;
+  margin-top: -205px;
   background-repeat: no-repeat;
   background-size: 50% 50%;
-  width: 360px;
-  height: 323px;
+  width: 410px;
+  height: 367.5px;
 }
 #spl_active {
   background-image: url(/images/t2.active.png);
