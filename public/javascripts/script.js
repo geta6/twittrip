@@ -95,7 +95,7 @@
         geoInfo = [];
         var g = Math.abs(e.accelerationIncludingGravity.x) + Math.abs(e.accelerationIncludingGravity.y) + Math.abs(e.accelerationIncludingGravity.z);
         //console.log(g);
-        if (20 < g) {
+        if (28 < g) {
           max = (g > max) ? g : max;//適当に*10して単位はkm
        } else if (max != 0) {
           alert(max);
@@ -173,10 +173,10 @@
             // debug.html(debug.html + " : " + geoInfo[i]);
           }
           if(gotGeo){
-            infoWindow2.setContent('<p>'+geoInfo[1]+'</p>' + '<p><img class ="flickrImage" src="../images/5.jpg"/></p>');
-            infoWindow3.setContent('<p>'+geoInfo[2]+'</p>' + '<p><img class ="flickrImage" src="../images/5.jpg"/></p>');
-            infoWindow4.setContent('<p>'+geoInfo[3]+'</p>' + '<p><img class ="flickrImage" src="../images/5.jpg"/></p>');
-            infoWindow5.setContent('<p>'+geoInfo[4]+'</p>' + '<p><img class ="flickrImage" src="../images/5.jpg"/></p>');
+            infoWindow2.setContent(geoInfo[1]);
+            infoWindow3.setContent(geoInfo[2]);
+            infoWindow4.setContent(geoInfo[3]);
+            infoWindow5.setContent(geoInfo[4]);
           }
 
           // geocoder2.geocode({'latLng': infoPos[1]}, function(results, status) {
