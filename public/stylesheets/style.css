@@ -40,10 +40,10 @@ body {
   width: 360px;
   height: 323px;
 }
-#img_active {
+#spl_active {
   background-image: url(/images/t2.active.png);
 }
-#img_inactive {
+#spl_inactive {
   background-image: url(/images/t2.inactive.png);
 }
 
