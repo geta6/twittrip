@@ -38,6 +38,7 @@ body {
 }
 
 #direction {
+  z-index: 150;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -51,10 +52,10 @@ body {
 }
 
 #location {
+  z-index: 250;
   position: fixed;
   left: 50%;
   top: 50%;
-  z-index: 300;
   width: 16px;
   height: 16px;
   background-image: url(/images/location.png);
