@@ -154,6 +154,9 @@
           });
 
           //clickable
+          google.maps.event.addListener(marker[0], 'click', function() {
+            currentMarker.open(map, marker[0]);
+          });
           google.maps.event.addListener(marker[1], 'click', function() {
             infoWindow2.open(map, marker[1]);
           });
