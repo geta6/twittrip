@@ -135,7 +135,7 @@
           ];
           for(i=0;i<5;i++){
             var location = floatingLocations[i];
-            alert(data[i].lon);
+            alert(data[0].lon);
             infoPos[i] = new google.maps.LatLng(data[i].lat,data[i].lon);
             marker[i] = new google.maps.Marker({
               position: infoPos[i],
