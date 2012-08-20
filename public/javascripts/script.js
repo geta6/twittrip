@@ -133,7 +133,7 @@
             ['4',data[3].lat,data[3].lon,4],
             ['5',data[4].lat,data[4].lon,5]
           ];
-          for(i=0;i<floatingLocations.length;i++){
+          for(i=0;i<5;i++){
             var location = floatingLocations[i];
             alert(data[i].lat);
             infoPos[i] = new google.maps.LatLng(data[i].lat,data[i].lon);
