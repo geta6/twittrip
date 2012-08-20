@@ -94,6 +94,7 @@
         infoWin = [];
         geoInfo = [];
         var g = Math.abs(e.accelerationIncludingGravity.x) + Math.abs(e.accelerationIncludingGravity.y) + Math.abs(e.accelerationIncludingGravity.z);
+        console.log(g);
         if (20 < g) {
           max = (g > max) ? g : max;//適当に*10して単位はkm
        } else if (max != 0) {
