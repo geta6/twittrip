@@ -10,7 +10,7 @@ body {
 }
 
 .navbar-fixed-top {
-  z-index: 200;
+  z-index: 500;
 }
 .navbar-inner {
   opacity: 0.84;
@@ -27,7 +27,7 @@ body {
 
 
 #splash {
-  z-index: 1000;
+  z-index: 400;
   position: fixed;
   top: 0;
   left: 0;
@@ -37,7 +37,7 @@ body {
 }
 
 .splimg {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   margin-left: -183.75px;
@@ -47,6 +47,7 @@ body {
   width: 410px;
   height: 367.5px;
 }
+
 #spl_active {
   background-image: url(/images/t2.active.png);
 }
