@@ -221,25 +221,18 @@ app.get '/throw', (req, res) ->
   splitted = distance / div
   division = div - 1
   halfway  = [{lat: lat, lon: lon}]
-  async.series [
-    () ->
-      for p in [1...division]
-        random = Math.random() * 6 - 3
-        if p is 1
-          halfway.push
-            lat: toCorrectLat(lat + (splitted * Math.cos(deg * Math.PI / 180)) + random)
-            lon: toCorrectLon(lon + (splitted * Math.sin(deg * Math.PI / 180)) + random)
-        else
-          halfway.push
-            lat: toCorrectLat(halfway[halfway.length-1].lat + (splitted * Math.cos(deg * Math.PI / 180)) + random)
-            lon: toCorrectLon(halfway[halfway.length-1].lon + (splitted * Math.sin(deg * Math.PI / 180)) + random)
-    , () ->
-      for half, i in halfway
-        toGeoDecode half.lat, half.lon, (address) ->
-          halfway[i].address = address
-  ], () ->
-    res.writeHead 200, 'Content-Type': 'application/json;charset=UTF-8'
-    res.end JSON.stringify halfway
+  for p in [1...division]
+    random = Math.random() * 6 - 3
+    if p is 1
+      halfway.push
+        lat: toCorrectLat(lat + (splitted * Math.cos(deg * Math.PI / 180)) + random)
+        lon: toCorrectLon(lon + (splitted * Math.sin(deg * Math.PI / 180)) + random)
+    else
+      halfway.push
+        lat: toCorrectLat(halfway[halfway.length-1].lat + (splitted * Math.cos(deg * Math.PI / 180)) + random)
+        lon: toCorrectLon(halfway[halfway.length-1].lon + (splitted * Math.sin(deg * Math.PI / 180)) + random)
+  res.writeHead 200, 'Content-Type': 'application/json;charset=UTF-8'
+  res.end JSON.stringify halfway
 
 app.get '/pos', (req, res) ->
   lat = parseFloat req.query.lat
