@@ -97,8 +97,6 @@
               animation: google.maps.Animation.DROP,
               icon: flag
             });
-            setInterval(function(){marker[i].setMap(map);},500);
-
           }
           var infoWindow2 = new google.maps.InfoWindow();
           var infoWindow3 = new google.maps.InfoWindow();
