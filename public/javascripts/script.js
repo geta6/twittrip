@@ -52,7 +52,7 @@
         if (20 < g) {
           max = (g > max) ? g : max;//適当に*10して単位はkm
        } else if (max != 0) {
-          floatDistance = Math.ceil(max*1); // tune up the parameter
+          floatDistance = Math.ceil(max*100); // tune up the parameter
           //alert(floatDistance +'kmほど漂いました');
           threw = true;
           max = 0;
@@ -145,7 +145,7 @@
           geocoder5.geocode({'latLng': infoPos[4]}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               if (results[6]) {
-                map.setZoom(5);
+                map.setZoom(4);
                 infoWindow5.setContent(results[6].formatted_address);
                 //infoWindow5.open(map, marker[4]);
               }else{
@@ -218,7 +218,6 @@
           geocoder.geocode({'latLng': pos}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               if (results[6]) {
-                map.setZoom(6);
                 currentInfo.setContent(results[6].formatted_address);
               }
             }
