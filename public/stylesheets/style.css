@@ -21,8 +21,8 @@ body {
 
 .brand {
   font-style: italic;
-  font-weight: bold;
-  color: white;
+  font-weight: bold !important;
+  color: white !important;
 }
 
 
